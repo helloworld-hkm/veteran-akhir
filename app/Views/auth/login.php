@@ -1,88 +1,67 @@
 <?= $this->extend('auth/template/index') ?>
 
 <?= $this->section('content') ?>
-<div id="app">
-    <section class="section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-            <div class="login-brand">
-              <img src="<?=base_url()?>/template/assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
-            </div>
-    <?php
-    if (session()->getFlashdata('pesan')) {
-      echo session()->getFlashdata('pesan');
-      # code...
-    }
+<div class="container">
 
-    
-    ?>
-            <div class="card card-primary">
-              <div class="card-header"><h4>Login Admin</h4></div>
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
-              <div class="card-body">
-              <form action="<?=base_url('auth/cekLogin')?>" method="post">
-                <?=csrf_field()?>
-                <!-- <form method="POST" action="#" class="needs-validation" novalidate=""> -->
-                  <div class="form-group">
-                    <label for="email">username</label>
-                    <input id="username" type="text" class="form-control" name="username"  required autofocus>
-                 
-                  </div>
+        <div class="col-xl-6 col-lg-6 col-md-8 mb-n4">
 
-                  <div class="form-group">
-                    <div class="d-block">
-                    	<label for="password" class="control-label">Password</label>
-                      <div class="float-right">
-                        <a href="auth-forgot-password.html" class="text-small">
-                          Forgot Password?
-                        </a>
-                      </div>
+
+            <div class="card o-hidden border-0 bg-blur shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                <div class="text-center">
+
+                                    <img src="<?= base_url()?>/img/icon.ico" class="img-fluid" alt="logoi" width="15%">
+                                    <h2 class="h5 text-dark mt-2 mb-n1"> SMK VETERAN PEKALONGAN </h2>
+                                    <h2 class="h6 text-gray-900 mb-3">Jl. Maninjau No.14 51129 Pekalongan Jawa Tengah </h2>
+
+
+                                    <h1 class="h2 text-primary  f-1 mb-4"> <b>Halaman Masuk Siswa</b></h1>
+                                    
+
+
+                                </div>
+                                <form class="user" action="<?=base_url('auth/cekLogin')?>" method="POST">
+                                    <div class="form-group">
+                                    <?=csrf_field()?>
+                                        <input type="text" name="username"  class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" id="InputUsername" aria-describedby="emailHelp" placeholder="NISN">
+                                   
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control form-control-user   <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" "
+                                                id=" exampleInputPassword" placeholder="Password" autocomplete="off">
+                                       
+                                    </div>
+                                    <div class="form-group">
+                                    
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Masuk">
+
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <p class=" mb-n4">Dibuat oleh lina &middot; hakim &middot; septiyan &copy; <?=(date("Y"));?></p>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
-                    <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-                    <div class="invalid-feedback">
-                      please fill in your password
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                      <label class="custom-control-label" for="remember-me">Remember Me</label>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                      Login
-                    </button>
-                  </div>
-                  </form>
-                
-                <div class="row sm-gutters">
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-facebook">
-                      <span class="fab fa-facebook"></span> Facebook
-                    </a>
-                  </div>
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-twitter">
-                      <span class="fab fa-twitter"></span> Twitter
-                    </a>
-                  </div>
                 </div>
+            </div>
 
-              </div>
-            </div>
-            <div class="mt-5 text-muted text-center">
-              Don't have an account? <a href="auth-register.html">Create One</a>
-            </div>
-            <div class="simple-footer">
-              Copyright &copy; Stisla 2018
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-  </div>
+
+    </div>
+
+</div>
 <?= $this->endSection(); ?>

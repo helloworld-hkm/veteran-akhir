@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <section class="section">
   <div class="section-header">
-    <h1>Selamat Datang, Hakim!</h1>
+    <h1>Selamat Datang,!</h1>
     <div class="section-header-breadcrumb">
      
       <div class="breadcrumb-item active"><a href="#"><?= date( 'd-F-Y H:i:s') ?></a></div>
@@ -39,20 +39,24 @@
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">Ulangan</th>
-                          <th scope="col">Guru</th>
+                        
                           <th scope="col">Status</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Bahasa Indonesia</td>
-                          <td>Supriadi,Spd</td>
-                                  <td>Belum Dikerjakan</td>
-                          <td>  <a class=" d-block btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Kerjakan dengan Jujur"><i class="fas fa-pencil-alt"></i>  Kerjakan</a>
+                        <?php $i=1;?>
+                        <?php foreach ($ulangan as $key => $ul) {?>
+                          <tr>
+                          <th scope="row"><?=$i++;?></th>
+                          <td>Teknik Komputer Dan Jaringan</td>
+                          <td>Belum DIkerjakan</td>
+                                 
+                          <td>  <a href="ulangan/kerjakan" class=" d-block btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Kerjakan dengan Jujur"><i class="fas fa-pencil-alt"></i>  Kerjakan</a>
                           </td>
                         </tr>
+                        <?php };?>
+                        
                     
                       </tbody>
                       

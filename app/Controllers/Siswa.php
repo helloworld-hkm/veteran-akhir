@@ -6,7 +6,16 @@ class Siswa extends BaseController
 {
     public function index()
     {
-        $data['title']="hakim";
+
+       
+        $builder = $this->db->table('ulangan');
+        $query   = $builder->get();
+       
+        $data=[
+            'title'=>'siswa',
+            'ulangan'=>$query->getResult()
+    ];
+
         return view('siswa/index',$data);
     }
     public function cekUser()

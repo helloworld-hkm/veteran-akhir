@@ -12,7 +12,35 @@ class Admin extends BaseController
    
     public function index()
     {
-        $data['title']='Home';
+       
+        $builder = $this->db->table('jurusan');
+        $query   = $builder->get();
+        $jurusan=count($query->getResult());
+
+        $builder = $this->db->table('siswa');
+        $query1   = $builder->get();
+        $siswa=count($query1->getResult());
+        
+        $builder = $this->db->table('kelas');
+        $query2   = $builder->get();
+        $kelas=count($query2->getResult());
+
+        $builder = $this->db->table('guru');
+        $query3   = $builder->get();
+        $guru=count($query3->getResult());
+        $data=[
+        'title'=>'home',
+        'jurusan'=>$jurusan,
+        'siswa'=>$siswa,
+        'kelas'=>$kelas,
+        'guru'=>$guru,
+
+        
+
+    ];
+
+        
+     
         return view('admin/home',$data);
     }
 

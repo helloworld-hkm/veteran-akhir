@@ -16,7 +16,7 @@
                     <h4>Jurusan</h4>
                   </div>
                   <div class="card-body">
-                    10
+                  <?=$jurusan;?>
                   </div>
                 </div>
               </div>
@@ -31,7 +31,7 @@
                     <h4>Kelas</h4>
                   </div>
                   <div class="card-body">
-                    42
+                    <?=$kelas;?>
                   </div>
                 </div>
               </div>
@@ -46,7 +46,7 @@
                     <h4>Guru</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                  <?=$guru;?>
                   </div>
                 </div>
               </div>
@@ -61,13 +61,13 @@
                     <h4>Siswa</h4>
                   </div>
                   <div class="card-body">
-                    47
+                  <?=$siswa;?>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="card">
+          <!-- <div class="card">
                   <div class="card-header">
                     <h4>Show/Hide</h4>
                     <div class="card-header-action">
@@ -82,6 +82,6 @@
                       Card Footer
                     </div>
                   </div>
-                </div>
+                </div> -->
         </section>
         <?=$this->endSection()?>

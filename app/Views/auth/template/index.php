@@ -1,41 +1,54 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <link rel="shortcut icon" href="<?= base_url()?>/img/icon.ico" />
-  <title>VETERAN CBT &mdash; Stisla</title>
 
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="img/icon.ico" />
+    <title>Veteran - login</title>
 
-  <!-- CSS Libraries -->
-  <link rel="stylesheet" href="<?=base_url()?>/template/node_modules/bootstrap-social/bootstrap-social.css">
+    <!-- Custom fonts for this template-->
+    <link href="<?=base_url();?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="<?=base_url()?>/template/assets/css/style.css">
-  <link rel="stylesheet" href="<?=base_url()?>/template/assets/css/components.css">
+    <!-- Custom styles for this template-->
+    <link href="<?=base_url();?>/css/sb-admin-2.css" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&display=swap');
+    .f-1{
+        font-family: 'Noto Sans', sans-serif;
+    }
+    .smk{
+        font-family: 'Noto Sans', sans-serif;
+    }
+</style>
 
-<body>
-<?=$this->renderSection('content')?>
+<body class="bg-gradient-light">
 
-  <!-- General JS Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="<?=base_url()?>/template/assets/js/stisla.js"></script>
+  <?=$this->renderSection('content')?>
 
-  <!-- JS Libraies -->
+    <!-- Bootstrap core JavaScript-->
+    <script src="<?=base_url();?>/vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Template JS File -->
-  <script src="<?=base_url()?>/template/assets/js/scripts.js"></script>
-  <script src="<?=base_url()?>/template/assets/js/custom.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="<?=base_url();?>/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Page Specific JS File -->
+    <!-- Custom scripts for all pages-->
+    <script src="<?=base_url();?>/js/sb-admin-2.min.js"></script>
+
 </body>
+
 </html>
