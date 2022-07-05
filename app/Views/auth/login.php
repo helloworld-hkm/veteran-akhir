@@ -23,7 +23,7 @@
                                     <h2 class="h6 text-gray-900 mb-3">Jl. Maninjau No.14 51129 Pekalongan Jawa Tengah </h2>
 
 
-                                    <h1 class="h2 text-primary  f-1 mb-4"> <b>Halaman Masuk Siswa</b></h1>
+                                    <h1 class="h2 text-primary  f-1 mb-4"> <b>Halaman Masuk </b></h1>
                                     
 
 

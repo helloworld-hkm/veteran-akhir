@@ -52,7 +52,7 @@
                       
                       <div class="">
                         <button class="btn btn-success"><i class="fas fa-paper-plane"></i>Simpan</button>
-                        <a href="/admin/mapel"class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
+                        <a href="/admin/siswa"class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
                       </div>
                     </div>
                    </form>

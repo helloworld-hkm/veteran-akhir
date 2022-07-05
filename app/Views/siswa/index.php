@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <section class="section">
   <div class="section-header">
-    <h1>Selamat Datang,!</h1>
+    <h1>Selamat Datang,Siswa!</h1>
     <div class="section-header-breadcrumb">
      
       <div class="breadcrumb-item active"><a href="#"><?= date( 'd-F-Y H:i:s') ?></a></div>

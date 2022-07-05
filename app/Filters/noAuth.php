@@ -12,7 +12,7 @@ class noAuth implements FilterInterface
     {
         if (session()->get('log')== true) {
             if (session()->get('role')== 1) {
-                return redirect()->to(base_url('siswa'));
+                return redirect()->to(base_url('admin'));
             }elseif (session()->get('role')== 2) {
                 return redirect()->to(base_url('siswa'));
             }

@@ -7,7 +7,7 @@
             <a href="index.html"><img src="<?=base_url()?>/img/icon.ico" width="30px" alt=""></a>
           </div>
           <ul class="sidebar-menu">
-              <li class="menu-header">Main Menu</li>
+              <li class="menu-header">Main-Menu</li>
               <li >
               <a class="nav-link" href="/admin"><i class="fas fa-home"></i><span>Dashboard</span></a>
                 
