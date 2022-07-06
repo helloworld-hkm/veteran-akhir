@@ -1,0 +1,15 @@
+ERROR - 2022-07-06 21:26:36 --> Error connecting to the database: Unknown database 'veteran'
+CRITICAL - 2022-07-06 21:26:36 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'veteran'
+in SYSTEMPATH\Database\BaseConnection.php on line 416.
+ 1 SYSTEMPATH\Database\BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `username` = :username:', [...], false)
+ 3 APPPATH\Models\ModelAuth.php(23): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Auth.php(93): App\Models\ModelAuth->login('admin')
+ 5 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Auth->cekLogin()
+ 6 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
