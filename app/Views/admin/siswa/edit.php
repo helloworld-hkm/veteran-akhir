@@ -12,7 +12,7 @@
       <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="/admin">Dashboard</a></div>
         <div class="breadcrumb-item">Data Master</a></div>
-        <div class="breadcrumb-item"><a href="/admin">Mata Pelajaran</a></div>
+        <div class="breadcrumb-item"><a href="/admin">Siswa</a></div>
         <div class="breadcrumb-item">Edit Data</div>
       </div>
     </div>

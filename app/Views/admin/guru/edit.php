@@ -5,14 +5,15 @@
 
     <section class="section">
         <div class="section-header">
-            <h1>Guru </h1>
+            <h1>Edit Siswa </h1>
             <div class="section-header-button">
 
             </div>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="/admin">Dashboard</a></div>
-                <div class="breadcrumb-item">Registrasi</a></div>
-                <div class="breadcrumb-item">Guru</div>
+                <div class="breadcrumb-item">Data Master</a></div>
+                <div class="breadcrumb-item"><a href="/admin">Guru</a></div>
+                <div class="breadcrumb-item">Edit Data</div>
             </div>
         </div>
         <?php if (session()->getFlashdata('is_unique')) : ?>
@@ -33,23 +34,18 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tambah data Guru</h4>
+                            <h4>Edit data </h4>
 
                         </div>
                         <div class="card-body">
-                            <form action="<?= base_url('/admin/simpanGuru') ?>" method="post" autocomplete="off">
+                            <form action="<?= base_url('/admin/updateGuru/' . $guru->id) ?>" method="post" autocomplete="off">
                                 <?= csrf_field(); ?>
+                                <input type="hidden" name="_method" value="PUT">
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <label for="nama_mapel">NIK :</label>
-                                        <input type="text" class="form-control" name="username" required autofocus <?php if (session('errors.username')) : ?>is-invalid<?php endif ?> value="<?= old('username') ?>">
+                                        <label for="nama_mapel">Nama Guru :</label>
+                                        <input type="text" class="form-control" name="nama" required autofocus <?php if (session('errors.nama')) : ?>is-invalid<?php endif ?> value="<?= $guru->nama ?>">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nama_mapel">Nama :</label>
-                                        <input type="text" class="form-control" name="nama" required autofocus <?php if (session('errors.nama')) : ?>is-invalid<?php endif ?> value="<?= old('nama') ?>">
-                                    </div>
-
-
                                     <div class="">
                                         <button class="btn btn-success"><i class="fas fa-paper-plane"></i>Simpan</button>
                                         <a href="/admin/guru" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>

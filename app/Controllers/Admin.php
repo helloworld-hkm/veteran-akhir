@@ -149,6 +149,12 @@ class Admin extends BaseController
         return view('admin/guru/tambah', $data);
     }
 
+    public function hapusGuru($id)
+    {
+        $this->db->table('guru')->where(['id' => $id])->delete();
+        return redirect()->to(base_url('/admin/guru'))->with('success', 'Data Berhasil Dihapus!');
+    }
+
     public function registerSiswa()
     {
         $data = [
@@ -530,6 +536,47 @@ class Admin extends BaseController
         $this->db->table('siswa')->where(['id' => $id])->update($data);
         if ($this->db->affectedRows() > 0) {
             return redirect()->to(base_url('/admin/siswa'))->with('success', 'Data Berhasil Diubah!');
+        }
+        // return view('admin/mapel/tambah',$data);
+
+    }
+
+    public function editGuru($id = null)
+    {
+        $data['title'] = "Edit Guru";
+        if ($id != null) {
+            $query = $this->db->table('guru')->getWhere(['id' => $id]);
+            if ($query->resultID->num_rows > 0) {
+                $data['guru'] = $query->getRow();
+                return view('admin/guru/edit', $data);
+            } else {
+                return redirect()->to(base_url('/admin/guru'))->with('eror', 'Data Tidak Ditemukan!');
+            }
+        } else {
+            return redirect()->to(base_url('/admin/guru'))->with('eror', 'Data Tidak Ditemukan!');
+        }
+    }
+
+    public function updateGuru($id)
+    {
+        $data = $this->request->getPost();
+        if (!$this->validate([
+
+            'nama' => ['rules' => 'required|is_unique[guru.nama]', 'errors' => ['is_unique' => 'data Guru Sudah Ada!!', 'required' => 'NISN wajib diisi!!']]
+
+
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/admin/editGuru/' . $id)->with('is_unique', 'Data Guru Sudah Ada!!!')->withInput();
+        }
+        $data = [
+            'nama' => ucwords($this->request->getVar('nama'))
+
+        ];
+        unset($data['_method']);
+        $this->db->table('guru')->where(['id' => $id])->update($data);
+        if ($this->db->affectedRows() > 0) {
+            return redirect()->to(base_url('/admin/guru'))->with('success', 'Data Berhasil Diubah!');
         }
         // return view('admin/mapel/tambah',$data);
 
