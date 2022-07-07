@@ -129,7 +129,7 @@ class Admin extends BaseController
                 'nama' => $this->request->getPost('nama')
 
             ];
-            $this->ModelAuth->siswa($dataGuru);
+            $this->ModelAuth->guru($dataGuru);
 
             session()->setFlashdata('pesan', 'register berhasil');
             return redirect()->to(base_url('Admin/guru/'));
@@ -202,6 +202,7 @@ class Admin extends BaseController
 
         return view('admin/mapel/tambah', $data);
     }
+
     public function simpanMapel()
     {
         if (!$this->validate([
@@ -223,6 +224,7 @@ class Admin extends BaseController
         }
         return view('admin/mapel/tambah', $data);
     }
+
     public function editMapel($id = null)
     {
         $data['title'] = "Edit Mata Pelajaran";
@@ -490,5 +492,21 @@ class Admin extends BaseController
             return redirect()->to(base_url('/admin/kelas'))->with('success', 'Data Berhasil Diubah!');
         }
         return view('admin/kelas/tambah', $data);
+    }
+
+    public function editsiswa($id = null)
+    {
+        $data['title'] = "Edit Siswa";
+        if ($id != null) {
+            $query = $this->db->table('siswa')->getWhere(['id' => $id]);
+            if ($query->resultID->num_rows > 0) {
+                $data['siswa'] = $query->getRow();
+                return view('admin/siswa/edit', $data);
+            } else {
+                return redirect()->to(base_url('/admin/siswa'))->with('eror', 'Data Tidak Ditemukan!');
+            }
+        } else {
+            return redirect()->to(base_url('/admin/siswa'))->with('eror', 'Data Tidak Ditemukan!');
+        }
     }
 }
