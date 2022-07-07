@@ -160,7 +160,7 @@ class Admin extends BaseController
 
     public function hapusSiswa($id)
     {
-        $this->db->table('user')->where(['id' => $id])->delete();
+        $this->db->table('siswa')->where(['id' => $id])->delete();
         return redirect()->to(base_url('/admin/siswa'))->with('success', 'Data Berhasil Dihapus!');
     }
     //guru
@@ -508,5 +508,30 @@ class Admin extends BaseController
         } else {
             return redirect()->to(base_url('/admin/siswa'))->with('eror', 'Data Tidak Ditemukan!');
         }
+    }
+
+    public function updateSiswa($id)
+    {
+        $data = $this->request->getPost();
+        if (!$this->validate([
+
+            'nama' => ['rules' => 'required|is_unique[siswa.nama]', 'errors' => ['is_unique' => 'data Siswa Sudah Ada!!', 'required' => 'NISN wajib diisi!!']]
+
+
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/admin/editSiswa/' . $id)->with('is_unique', 'Data Siswa Sudah Ada!!!')->withInput();
+        }
+        $data = [
+            'nama' => ucwords($this->request->getVar('nama'))
+
+        ];
+        unset($data['_method']);
+        $this->db->table('siswa')->where(['id' => $id])->update($data);
+        if ($this->db->affectedRows() > 0) {
+            return redirect()->to(base_url('/admin/siswa'))->with('success', 'Data Berhasil Diubah!');
+        }
+        // return view('admin/mapel/tambah',$data);
+
     }
 }

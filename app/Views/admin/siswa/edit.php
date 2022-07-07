@@ -5,7 +5,7 @@
 
   <section class="section">
     <div class="section-header">
-      <h1>Mata Pelajaran </h1>
+      <h1>Edit Siswa </h1>
       <div class="section-header-button">
 
       </div>
@@ -43,8 +43,8 @@
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-group">
                   <div class="form-group">
-                    <label for="nama_mapel">Nama Mata pelajaran :</label>
-                    <input type="text" class="form-control" name="username" required autofocus <?php if (session('errors.username')) : ?>is-invalid<?php endif ?> value="<?= $siswa->username ?>">
+                    <label for="nama_mapel">Nama Siswa :</label>
+                    <input type="text" class="form-control" name="nama" required autofocus <?php if (session('errors.nama')) : ?>is-invalid<?php endif ?> value="<?= $siswa->nama ?>">
                   </div>
                   <div class="">
                     <button class="btn btn-success"><i class="fas fa-paper-plane"></i>Simpan</button>
