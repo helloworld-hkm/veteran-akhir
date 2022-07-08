@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class ModelAuth extends Model
 {
-    protected $table = 'user';
+    protected $table = 'guru';
     protected $useTimestamps = true;
     protected $primarykey = 'id';
     protected $allowedFields = ['id', 'username', 'password', 'role_id'];
@@ -22,7 +22,7 @@ class ModelAuth extends Model
 
     public function login($username)
     {
-       
+        $useTimestamps = true;
         return $this->db->table('user')->where([
             'username' => $username
         ])->get()->getRowArray();
