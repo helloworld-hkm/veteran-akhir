@@ -80,7 +80,7 @@
 
                         <td><a href="<?= base_url('admin/editSiswa/' . $ss->id) ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
                         <td>
-                          <form action="<?= base_url('admin/hapusSiswa/' . $ss->user_id) ?>" method="post" onsubmit="return confirm('yakin ingin hapus data?')">
+                          <form action="<?= base_url('admin/hapusSiswa/' . $ss->id) ?>" method="post" onsubmit="return confirm('yakin ingin hapus data?')">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="btn btn-danger">

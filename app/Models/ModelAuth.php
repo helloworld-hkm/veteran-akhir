@@ -22,7 +22,7 @@ class ModelAuth extends Model
 
     public function login($username)
     {
-       
+        $useTimestamps = true;
         return $this->db->table('user')->where([
             'username' => $username
         ])->get()->getRowArray();

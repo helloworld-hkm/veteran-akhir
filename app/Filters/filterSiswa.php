@@ -16,9 +16,8 @@ class filterSiswa implements FilterInterface
             }
             elseif (session()->get('role')== 3) {
                 return redirect()->to(base_url('guru'));
-                
             }
-
+            
         }
         
     }

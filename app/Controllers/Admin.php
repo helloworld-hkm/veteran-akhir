@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\ModelAuth;
-use App\Models\ModelSiswa;
 
 class Admin extends BaseController
 {
@@ -11,7 +10,6 @@ class Admin extends BaseController
     {
         helper('form');
         $this->ModelAuth = new ModelAuth();
-        $this->ModelSiswa = new ModelSiswa();
     }
 
     public function index()
@@ -46,6 +44,53 @@ class Admin extends BaseController
 
 
         return view('admin/home', $data);
+    }
+
+    public function simpanSiswa()
+    {
+        $valid = $this->validate([
+            'username' => [
+
+                'rules' => 'is_unique[user.username]',
+                'errors' => [
+                    'required', 'username harus diisi'
+                ]
+
+            ],
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required', 'password harus diisi'
+                ]
+
+            ]
+
+        ]);
+        if ($valid) {
+            $data = [
+                'username' => $this->request->getPost('username'),
+                'password' => password_hash($this->request->getPost('username'), PASSWORD_DEFAULT),
+                'role_id' => 2
+            ];
+            $this->ModelAuth->save($data);
+            $id_siswa = $this->db->table('user')->where([
+                'username' => $this->request->getVar('username')
+            ])->get()->getRowArray();
+            // dd($id_siswa);
+            $dataSiswa = [
+                'user_id' => $id_siswa['id'],
+                'nama' => $this->request->getPost('nama')
+
+            ];
+            $this->ModelAuth->siswa($dataSiswa);
+
+            session()->setFlashdata('pesan', 'register berhasil');
+            return redirect()->to(base_url('Admin/siswa/'));
+        } else {
+
+            $validation = \Config\Services::validation();
+            return redirect()->to(base_url('Admin/registerSiswa'))->withInput('validation', $validation);
+        }
     }
 
     public function simpanGuru()
@@ -112,88 +157,16 @@ class Admin extends BaseController
 
     public function registerSiswa()
     {
-        $builder= $this->db->table('kelas')->join('jurusan','kelas.jurusan_id = jurusan.id_jurusan');
-        $query   = $builder->get();
         $data = [
             'title' => 'register siswa',
-            'validation' => \Config\Services::validation(),
-            'kelas' => $query->getresult()
+            'validation' => \Config\Services::validation()
         ];
         return view('admin/siswa/tambah', $data);
-    }
-    public function simpanSiswa()
-    {
-        $valid = $this->validate([
-            'username' => [
-
-                'rules' => 'is_unique[user.username]',
-                'errors' => [
-                    'required', 'username harus diisi'
-                ]
-
-            ],
-            'nama' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required', 'password harus diisi'
-                ]
-
-            ]
-
-        ]);
-        if ($valid) {
-            $data = [
-                'username' => $this->request->getPost('nisn'),
-                'password' => password_hash($this->request->getPost('nisn'), PASSWORD_DEFAULT),
-                'role_id' => 2
-            ];
-
-            $this->ModelAuth->save($data);
-            $id_siswa = $this->db->table('user')->where([
-                'username' => $this->request->getVar('nisn')
-            ])->get()->getRowArray();
-            $id_kelas = $this->db->table('kelas')->where([
-                'id_kelas' => $this->request->getVar('kelas')
-            ])->get()->getRowArray();
-            $foto=$this->request->getPost('jenis_kelamin')=='1'?'default-l.png':'default-p.png';
-            // dd($id_siswa);
-        //    dd($id_kelas['id_kelas']);
-            $dataSiswa = [
-                'user_id' => $id_siswa['id'],
-
-                'nisn' => $this->request->getPost('nisn'),
-                'nama' => $this->request->getPost('nama'),
-                'id_kelas' =>$this->request->getVar('kelas'),
-                'tempat_lahir' => $this->request->getPost('tempat_lahir'),
-                'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
-             
-                'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
-                'agama' => $this->request->getPost('agama'),
-                'no_hp' => $this->request->getPost('no_hp'),
-                'alamat' => $this->request->getPost('alamat'),
-                'nama_orangtua' => $this->request->getPost('nama_orangtua'),
-                'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
-                'foto' => $foto,
-                
-
-            ];
-            // dd($dataSiswa);
-            $this->ModelSiswa->save($dataSiswa);
-
-            session()->setFlashdata('pesan', 'register berhasil');
-            return redirect()->to(base_url('Admin/siswa/'));
-        } else {
-
-            $validation = \Config\Services::validation();
-            return redirect()->to(base_url('Admin/registerSiswa'))->withInput('validation', $validation);
-        }
     }
 
     public function hapusSiswa($id)
     {
-     
-        $this->db->table('siswa')->where(['user_id' => $id])->delete();
-        $this->db->table('user')->where(['id' => $id])->delete();
+        $this->db->table('siswa')->where(['id' => $id])->delete();
         return redirect()->to(base_url('/admin/siswa'))->with('success', 'Data Berhasil Dihapus!');
     }
     //guru
@@ -420,7 +393,6 @@ class Admin extends BaseController
     {
         $builder = $this->db->table('jurusan');
         $query   = $builder->get();
-        
 
         $data = [
             'title' => 'Tambah Data Kelas',
@@ -435,17 +407,17 @@ class Admin extends BaseController
     {
         // $validate=$this->validate([
 
-        //     'nama_kelas' => [
-        //         'rules' => 'required|is_unique[kelas.nama_kelas]', 
+        //     'keterangan' => [
+        //         'rules' => 'required|is_unique[jurusan.keterangan]', 
         //         'errors' => [
-        //             'is_unique' => 'Kelas sudah ada'
+        //             'is_unique' => 'Keterangan Tidak Boleh Sama!!'
         //             ]
         //         ],
-           
+        //     'nama_jurusan' => ['rules' => 'required|is_unique[jurusan.nama_jurusan]', 'errors' => ['is_unique' => 'Kode Jurusan Tidak Boleh Sama!!']]
         // ]); 
         // if (!$validate) {
         //       $validation = \Config\Services::validation();
-        //     return redirect()->to('/admin/tambahKelas')->with('is_unique', 'Kelas Sudah Ada')->withInput('validation',$validation);;
+        //     return redirect()->to('/admin/tambahJurusan')->withInput('validation',$validation);;
         // }
         $nama_jurusan = $this->db->table('jurusan')->where([
             'id_jurusan' => $this->request->getVar('jurusan_id')
@@ -474,7 +446,6 @@ class Admin extends BaseController
     {
         $builder = $this->db->table('jurusan');
         $query   = $builder->get();
-        
         $data = [
             'title' => 'Edit Data kelas',
             'validation' => \Config\Services::validation(),
@@ -497,20 +468,20 @@ class Admin extends BaseController
 
     public function updateKelas($id)
     {
-        $validate=$this->validate([
+        // $validate=$this->validate([
 
-            'nama_kelas' => [
-                'rules' => 'required|is_unique[kelas.nama_kelas]', 
-                'errors' => [
-                    'is_unique' => 'Kelas sudah ada'
-                    ]
-                ],
-           
-        ]); 
-        if (!$validate) {
-              $validation = \Config\Services::validation();
-            return redirect()->to('/admin/editkelas/'.$id)->with('is_unique', 'Kelas Sudah Ada')->withInput('validation',$validation);;
-        }
+        //     'keterangan' => [
+        //         'rules' => 'required|is_unique[jurusan.keterangan]', 
+        //         'errors' => [
+        //             'is_unique' => 'Keterangan Tidak Boleh Sama!!'
+        //             ]
+        //         ],
+        //     'nama_jurusan' => ['rules' => 'required|is_unique[jurusan.nama_jurusan]', 'errors' => ['is_unique' => 'Kode Jurusan Tidak Boleh Sama!!']]
+        // ]); 
+        // if (!$validate) {
+        //      $validation = \Config\Services::validation();
+        //     return redirect()->to('/admin/editJurusan/'.$id)->withInput('validation',$validation);;
+        // }
         $nama_jurusan = $this->db->table('jurusan')->where([
             'id_jurusan' => $this->request->getVar('jurusan_id')
         ])->get()->getRowArray();;
@@ -531,21 +502,11 @@ class Admin extends BaseController
 
     public function editsiswa($id = null)
     {
-        $builder= $this->db->table('kelas')->join('jurusan','kelas.jurusan_id = jurusan.id_jurusan');
-        $query   = $builder->get();
-        
-     
-       
+        $data['title'] = "Edit Siswa";
         if ($id != null) {
-            $query1= $this->db->table('siswa')->join('user','user.id=siswa.user_id')->getWhere(['siswa.id' => $id]);
+            $query = $this->db->table('siswa')->getWhere(['id' => $id]);
             if ($query->resultID->num_rows > 0) {
-                $data = [
-                    'title' => 'Edit siswa',
-                    'validation' => \Config\Services::validation(),
-                    'kelas' => $query->getresult(),
-                    'siswa'=> $query1->getRow(),
-                    'id'=> $this->db->table('siswa')->getWhere(['siswa.id' => $id])->getRow()
-                ];
+                $data['siswa'] = $query->getRow();
                 return view('admin/siswa/edit', $data);
             } else {
                 return redirect()->to(base_url('/admin/siswa'))->with('eror', 'Data Tidak Ditemukan!');
@@ -558,41 +519,21 @@ class Admin extends BaseController
     public function updateSiswa($id)
     {
         $data = $this->request->getPost();
-        // if (!$this->validate([
+        if (!$this->validate([
 
-        //     'nama' => ['rules' => 'required|is_unique[siswa.nama]', 'errors' => ['is_unique' => 'data Siswa Sudah Ada!!', 'required' => 'NISN wajib diisi!!']]
+            'nama' => ['rules' => 'required|is_unique[siswa.nama]', 'errors' => ['is_unique' => 'data Siswa Sudah Ada!!', 'required' => 'NISN wajib diisi!!']]
 
 
-        // ])) {
-        //     $validation = \Config\Services::validation();
-        //     return redirect()->to('/admin/editSiswa/' . $id)->with('is_unique', 'Data Siswa Sudah Ada!!!')->withInput();
-        // }
-        $foto=$this->request->getPost('jenis_kelamin')=='1'?'default-l.png':'default-p.png';
-        $dataSiswa = [
-            
-
-         
-            'nama' => $this->request->getPost('nama'),
-            'id_kelas' =>$this->request->getVar('kelas'),
-            'tempat_lahir' => $this->request->getPost('tempat_lahir'),
-            'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
-         
-            'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
-            'agama' => $this->request->getPost('agama'),
-            'no_hp' => $this->request->getPost('no_hp'),
-            'alamat' => $this->request->getPost('alamat'),
-            'nama_orangtua' => $this->request->getPost('nama_orangtua'),
-            'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
-            'foto' => $foto,
-            
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/admin/editSiswa/' . $id)->with('is_unique', 'Data Siswa Sudah Ada!!!')->withInput();
+        }
+        $data = [
+            'nama' => ucwords($this->request->getVar('nama'))
 
         ];
-        // dd($dataSiswa);
- 
-        unset($dataSiswa['_method']);
-      
-        $this->ModelSiswa->update($id,$dataSiswa);
-     
+        unset($data['_method']);
+        $this->db->table('siswa')->where(['id' => $id])->update($data);
         if ($this->db->affectedRows() > 0) {
             return redirect()->to(base_url('/admin/siswa'))->with('success', 'Data Berhasil Diubah!');
         }

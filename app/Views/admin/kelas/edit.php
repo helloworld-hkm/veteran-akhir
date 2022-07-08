@@ -5,7 +5,7 @@
          
           <section class="section">
           <div class="section-header">
-            <h1>Kelas </h1>
+            <h1>Jurusan </h1>
             <div class="section-header-button">
             
             </div>
@@ -17,17 +17,7 @@
             </div>
           </div>
         
-          <?php if(session()->getFlashdata('is_unique')):?>
-    <div class="alert alert-danger alert-dismissible show fade">
-      <div class="alert-body">
-      <button class="close" data-dismiss>x</button>
-      <b><i class="fa fa-exclamation-triangle "></i></b>
-      <?=session()->getFlashdata('is_unique')?>
-      </div>
-     
-     
-    </div>
-    <?php endif;?>
+  
           <div class="section-body">
            
 

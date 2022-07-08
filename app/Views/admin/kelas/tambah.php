@@ -17,18 +17,6 @@
       </div>
     </div>
 
-
-    <?php if(session()->getFlashdata('is_unique')):?>
-    <div class="alert alert-danger alert-dismissible show fade">
-      <div class="alert-body">
-      <button class="close" data-dismiss>x</button>
-      <b><i class="fa fa-exclamation-triangle "></i></b>
-      <?=session()->getFlashdata('is_unique')?>
-      </div>
-     
-     
-    </div>
-    <?php endif;?>
     <div class="section-body">
 
 
@@ -61,22 +49,27 @@
                     </select>
                     <!--  -->
                   </div>
-                  
-                  <div class="form-group">
-                    <label for="nama_jurusan">Jurusan :</label>
-                    <select class="form-control" name="jurusan_id">
-                      <option selected disabled value="">-- pilih Jurusan --</option>
-                      <?php foreach ($jurusan as $key => $j) { ?>
-                        <option value="<?= $j->id_jurusan ?>"><?= $j->keterangan ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
                   <div class="form-group">
                     <label for="keterangan">rombel :</label>
                     <input type="text" class="form-control <?= $validation->hasError('keterangan') ? ' is-invalid' : ''; ?> " name="rombel" required autofocus value="<?= old('keterangan') ?>">
                     <div class="invalid-feedback">
                       <?= $validation->getError('keterangan'); ?>
                     </div>
+                  </div>
+                  <div class="form-group">
+
+                    <label for="nama_jurusan">Jurusan :</label>
+
+                    <select class="form-control" name="jurusan_id">
+                      <option selected disabled value="">-- pilih Jurusan --</option>
+                      <?php foreach ($jurusan as $key => $j) { ?>
+                        <option value="<?= $j->id_jurusan ?>"><?= $j->keterangan ?></option>
+                      <?php } ?>
+
+
+
+                    </select>
+
                   </div>
 
 
