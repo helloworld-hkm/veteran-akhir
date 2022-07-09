@@ -112,7 +112,7 @@ class Admin extends BaseController
 
     public function registerSiswa()
     {
-        $builder= $this->db->table('kelas')->join('jurusan','kelas.jurusan_id = jurusan.id_jurusan');
+        $builder = $this->db->table('kelas')->join('jurusan', 'kelas.jurusan_id = jurusan.id_jurusan');
         $query   = $builder->get();
         $data = [
             'title' => 'register siswa',
@@ -155,18 +155,18 @@ class Admin extends BaseController
             $id_kelas = $this->db->table('kelas')->where([
                 'id_kelas' => $this->request->getVar('kelas')
             ])->get()->getRowArray();
-            $foto=$this->request->getPost('jenis_kelamin')=='1'?'default-l.png':'default-p.png';
+            $foto = $this->request->getPost('jenis_kelamin') == '1' ? 'default-l.png' : 'default-p.png';
             // dd($id_siswa);
-        //    dd($id_kelas['id_kelas']);
+            //    dd($id_kelas['id_kelas']);
             $dataSiswa = [
                 'user_id' => $id_siswa['id'],
 
                 'nisn' => $this->request->getPost('nisn'),
                 'nama' => $this->request->getPost('nama'),
-                'id_kelas' =>$this->request->getVar('kelas'),
+                'id_kelas' => $this->request->getVar('kelas'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
-             
+
                 'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
                 'agama' => $this->request->getPost('agama'),
                 'no_hp' => $this->request->getPost('no_hp'),
@@ -174,7 +174,7 @@ class Admin extends BaseController
                 'nama_orangtua' => $this->request->getPost('nama_orangtua'),
                 'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
                 'foto' => $foto,
-                
+
 
             ];
             // dd($dataSiswa);
@@ -191,7 +191,7 @@ class Admin extends BaseController
 
     public function hapusSiswa($id)
     {
-     
+
         $this->db->table('siswa')->where(['user_id' => $id])->delete();
         $this->db->table('user')->where(['id' => $id])->delete();
         return redirect()->to(base_url('/admin/siswa'))->with('success', 'Data Berhasil Dihapus!');
@@ -420,7 +420,7 @@ class Admin extends BaseController
     {
         $builder = $this->db->table('jurusan');
         $query   = $builder->get();
-        
+
 
         $data = [
             'title' => 'Tambah Data Kelas',
@@ -441,7 +441,7 @@ class Admin extends BaseController
         //             'is_unique' => 'Kelas sudah ada'
         //             ]
         //         ],
-           
+
         // ]); 
         // if (!$validate) {
         //       $validation = \Config\Services::validation();
@@ -474,7 +474,7 @@ class Admin extends BaseController
     {
         $builder = $this->db->table('jurusan');
         $query   = $builder->get();
-        
+
         $data = [
             'title' => 'Edit Data kelas',
             'validation' => \Config\Services::validation(),
@@ -497,19 +497,19 @@ class Admin extends BaseController
 
     public function updateKelas($id)
     {
-        $validate=$this->validate([
+        $validate = $this->validate([
 
             'nama_kelas' => [
-                'rules' => 'required|is_unique[kelas.nama_kelas]', 
+                'rules' => 'required|is_unique[kelas.nama_kelas]',
                 'errors' => [
                     'is_unique' => 'Kelas sudah ada'
-                    ]
-                ],
-           
-        ]); 
+                ]
+            ],
+
+        ]);
         if (!$validate) {
-              $validation = \Config\Services::validation();
-            return redirect()->to('/admin/editkelas/'.$id)->with('is_unique', 'Kelas Sudah Ada')->withInput('validation',$validation);;
+            $validation = \Config\Services::validation();
+            return redirect()->to('/admin/editkelas/' . $id)->with('is_unique', 'Kelas Sudah Ada')->withInput('validation', $validation);;
         }
         $nama_jurusan = $this->db->table('jurusan')->where([
             'id_jurusan' => $this->request->getVar('jurusan_id')
@@ -531,20 +531,20 @@ class Admin extends BaseController
 
     public function editsiswa($id = null)
     {
-        $builder= $this->db->table('kelas')->join('jurusan','kelas.jurusan_id = jurusan.id_jurusan');
+        $builder = $this->db->table('kelas')->join('jurusan', 'kelas.jurusan_id = jurusan.id_jurusan');
         $query   = $builder->get();
-        
-     
-       
+
+
+
         if ($id != null) {
-            $query1= $this->db->table('siswa')->join('user','user.id=siswa.user_id')->getWhere(['siswa.id' => $id]);
+            $query1 = $this->db->table('siswa')->join('user', 'user.id=siswa.user_id')->getWhere(['siswa.id' => $id]);
             if ($query->resultID->num_rows > 0) {
                 $data = [
                     'title' => 'Edit siswa',
                     'validation' => \Config\Services::validation(),
                     'kelas' => $query->getresult(),
-                    'siswa'=> $query1->getRow(),
-                    'id'=> $this->db->table('siswa')->getWhere(['siswa.id' => $id])->getRow()
+                    'siswa' => $query1->getRow(),
+                    'id' => $this->db->table('siswa')->getWhere(['siswa.id' => $id])->getRow()
                 ];
                 return view('admin/siswa/edit', $data);
             } else {
@@ -567,16 +567,16 @@ class Admin extends BaseController
         //     $validation = \Config\Services::validation();
         //     return redirect()->to('/admin/editSiswa/' . $id)->with('is_unique', 'Data Siswa Sudah Ada!!!')->withInput();
         // }
-        $foto=$this->request->getPost('jenis_kelamin')=='1'?'default-l.png':'default-p.png';
+        $foto = $this->request->getPost('jenis_kelamin') == '1' ? 'default-l.png' : 'default-p.png';
         $dataSiswa = [
-            
 
-         
+
+
             'nama' => $this->request->getPost('nama'),
-            'id_kelas' =>$this->request->getVar('kelas'),
+            'id_kelas' => $this->request->getVar('kelas'),
             'tempat_lahir' => $this->request->getPost('tempat_lahir'),
             'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
-         
+
             'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
             'agama' => $this->request->getPost('agama'),
             'no_hp' => $this->request->getPost('no_hp'),
@@ -584,15 +584,15 @@ class Admin extends BaseController
             'nama_orangtua' => $this->request->getPost('nama_orangtua'),
             'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
             'foto' => $foto,
-            
+
 
         ];
         // dd($dataSiswa);
- 
+
         unset($dataSiswa['_method']);
-      
-        $this->ModelSiswa->update($id,$dataSiswa);
-     
+
+        $this->ModelSiswa->update($id, $dataSiswa);
+
         if ($this->db->affectedRows() > 0) {
             return redirect()->to(base_url('/admin/siswa'))->with('success', 'Data Berhasil Diubah!');
         }
