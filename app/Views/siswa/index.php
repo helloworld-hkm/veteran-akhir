@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <section class="section">
   <div class="section-header">
-    <h1>Selamat Datang,Siswa!</h1>
+    <h1>Selamat Datang,<?=$siswa->nama?>!</h1>
     <div class="section-header-breadcrumb">
      
       <div class="breadcrumb-item active"><a href="#"><?= date( 'd-F-Y H:i:s') ?></a></div>
@@ -45,12 +45,12 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $i=1;?>
+                        <?php $i=1; ?>
                         <?php foreach ($ulangan as $key => $ul) {?>
                           <tr>
                           <th scope="row"><?=$i++;?></th>
                           <td>Teknik Komputer Dan Jaringan</td>
-                          <td>Belum DIkerjakan</td>
+                          <td><?=$ul->id_mapel?></td>
                                  
                           <td>  <a href="ulangan/kerjakan" class=" d-block btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Kerjakan dengan Jujur"><i class="fas fa-pencil-alt"></i>  Kerjakan</a>
                           </td>
