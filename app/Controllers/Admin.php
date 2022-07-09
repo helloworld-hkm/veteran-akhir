@@ -138,6 +138,14 @@ class Admin extends BaseController
                     'required', 'password harus diisi'
                 ]
 
+            ],
+            'foto' => [
+                'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran Gambar Terlalu Besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar'
+                ]
             ]
 
         ]);
@@ -155,7 +163,14 @@ class Admin extends BaseController
             $id_kelas = $this->db->table('kelas')->where([
                 'id_kelas' => $this->request->getVar('kelas')
             ])->get()->getRowArray();
-            $foto = $this->request->getPost('jenis_kelamin') == '1' ? 'default-l.png' : 'default-p.png';
+            // $foto = $this->request->getPost('jenis_kelamin') == '1' ? 'default-l.png' : 'default-p.png';
+            $foto = $this->request->getFile('foto');
+            if ($foto->getError() == 4) {
+                $namaFoto = ('jenis_kelamin') == '1' ? 'default-p.png' : 'default-l.png';
+            } else {
+                $foto->move('img/siswa');
+                $namaFoto = $foto->getName();
+            }
             // dd($id_siswa);
             //    dd($id_kelas['id_kelas']);
             $dataSiswa = [
@@ -173,7 +188,7 @@ class Admin extends BaseController
                 'alamat' => $this->request->getPost('alamat'),
                 'nama_orangtua' => $this->request->getPost('nama_orangtua'),
                 'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
-                'foto' => $foto,
+                'foto' => $namaFoto,
 
 
             ];
@@ -191,7 +206,10 @@ class Admin extends BaseController
 
     public function hapusSiswa($id)
     {
-
+        // $hapus = $this->ModelSiswa->find($id);
+        // if ($hapus['foto'] != 'default-p.png' : 'default-l.png') {
+        //     unlink('img/siswa' . $hapus['foto']);
+        // }
         $this->db->table('siswa')->where(['user_id' => $id])->delete();
         $this->db->table('user')->where(['id' => $id])->delete();
         return redirect()->to(base_url('/admin/siswa'))->with('success', 'Data Berhasil Dihapus!');
@@ -555,7 +573,7 @@ class Admin extends BaseController
         }
     }
 
-    public function updateSiswa($id)
+    public function updateSiswa($id = 0)
     {
         $data = $this->request->getPost();
         // if (!$this->validate([
@@ -568,6 +586,43 @@ class Admin extends BaseController
         //     return redirect()->to('/admin/editSiswa/' . $id)->with('is_unique', 'Data Siswa Sudah Ada!!!')->withInput();
         // }
         $foto = $this->request->getPost('jenis_kelamin') == '1' ? 'default-l.png' : 'default-p.png';
+        // $foto = $this->request->getFile('foto');
+        // if ($foto->getError() == 4) {
+        //     $namaFoto = ('jenis_kelamin') == '1' ? 'default-p.png' : 'default-l.png';
+        // } else {
+        //     $foto->move('img/siswa');
+        //     $namaFoto = $foto->getName();
+        // }
+        // if ($foto->getError() == 9) {
+        //     $this->ModelSiswa->update($id, [
+        //         'nama' => $this->request->getPost('nama'),
+        //         'id_kelas' => $this->request->getVar('kelas'),
+        //         'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+        //         'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
+
+        //         'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+        //         'agama' => $this->request->getPost('agama'),
+        //         'no_hp' => $this->request->getPost('no_hp'),
+        //         'alamat' => $this->request->getPost('alamat'),
+        //         'nama_orangtua' => $this->request->getPost('nama_orangtua'),
+        //         'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
+        //     ]);
+        // } else {
+        //     $this->ModelSiswa->update($id, [
+        //         'nama' => $this->request->getPost('nama'),
+        //         'id_kelas' => $this->request->getVar('kelas'),
+        //         'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+        //         'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
+
+        //         'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+        //         'agama' => $this->request->getPost('agama'),
+        //         'no_hp' => $this->request->getPost('no_hp'),
+        //         'alamat' => $this->request->getPost('alamat'),
+        //         'nama_orangtua' => $this->request->getPost('nama_orangtua'),
+        //         'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
+        //         'foto' => $foto,
+        //     ]);
+        // }
         $dataSiswa = [
 
 

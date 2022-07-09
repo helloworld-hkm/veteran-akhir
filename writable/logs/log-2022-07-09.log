@@ -441,3 +441,190 @@ in APPPATH\Views\admin\siswa\edit.php on line 63.
  8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-07-09 13:35:17 --> Column 'username' cannot be null
+CRITICAL - 2022-07-09 13:35:17 --> Column 'username' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (NULL, \'$2y$10$Who/V2CDLPwp.dJtrdl.dOXyEHSM.2AdwA642l5H1NVkw/GLR.2lO\', 3, \'2022-07-09 13:35:16\', \'2022-07-09 13:35:16\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (NULL, \'$2y$10$Who/V2CDLPwp.dJtrdl.dOXyEHSM.2AdwA642l5H1NVkw/GLR.2lO\', 3, \'2022-07-09 13:35:16\', \'2022-07-09 13:35:16\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (NULL, \'$2y$10$Who/V2CDLPwp.dJtrdl.dOXyEHSM.2AdwA642l5H1NVkw/GLR.2lO\', 3, \'2022-07-09 13:35:16\', \'2022-07-09 13:35:16\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1904): CodeIgniter\Database\BaseConnection->query('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (:username:, :password:, :role_id:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(738): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(666): CodeIgniter\BaseModel->insert([...], false)
+ 8 SYSTEMPATH\BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+ 9 APPPATH\Controllers\Admin.php(77): CodeIgniter\BaseModel->save([...])
+10 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->simpanGuru()
+11 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+12 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-07-09 13:39:27 --> Column 'username' cannot be null
+CRITICAL - 2022-07-09 13:39:27 --> Column 'username' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (NULL, \'$2y$10$bcSJPQw6Waps3ctIqPy7bOOWoKudQ.O7.jhfaV38.q9J4Ktdo4u7u\', 3, \'2022-07-09 13:39:27\', \'2022-07-09 13:39:27\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (NULL, \'$2y$10$bcSJPQw6Waps3ctIqPy7bOOWoKudQ.O7.jhfaV38.q9J4Ktdo4u7u\', 3, \'2022-07-09 13:39:27\', \'2022-07-09 13:39:27\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (NULL, \'$2y$10$bcSJPQw6Waps3ctIqPy7bOOWoKudQ.O7.jhfaV38.q9J4Ktdo4u7u\', 3, \'2022-07-09 13:39:27\', \'2022-07-09 13:39:27\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1904): CodeIgniter\Database\BaseConnection->query('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (:username:, :password:, :role_id:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(738): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(666): CodeIgniter\BaseModel->insert([...], false)
+ 8 SYSTEMPATH\BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+ 9 APPPATH\Controllers\Admin.php(77): CodeIgniter\BaseModel->save([...])
+10 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->simpanGuru()
+11 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+12 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+ERROR - 2022-07-09 13:46:52 --> Column 'username' cannot be null
+CRITICAL - 2022-07-09 13:46:52 --> Column 'username' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (NULL, \'$2y$10$/i3hXl0PNKuVFbHL06U9BeQ9K/mR9QUEiDfoENsP6Yw42t3FjQCeC\', 3, \'2022-07-09 13:46:52\', \'2022-07-09 13:46:52\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (NULL, \'$2y$10$/i3hXl0PNKuVFbHL06U9BeQ9K/mR9QUEiDfoENsP6Yw42t3FjQCeC\', 3, \'2022-07-09 13:46:52\', \'2022-07-09 13:46:52\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (NULL, \'$2y$10$/i3hXl0PNKuVFbHL06U9BeQ9K/mR9QUEiDfoENsP6Yw42t3FjQCeC\', 3, \'2022-07-09 13:46:52\', \'2022-07-09 13:46:52\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1904): CodeIgniter\Database\BaseConnection->query('INSERT INTO `user` (`username`, `password`, `role_id`, `created_at`, `updated_at`) VALUES (:username:, :password:, :role_id:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(738): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(666): CodeIgniter\BaseModel->insert([...], false)
+ 8 SYSTEMPATH\BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+ 9 APPPATH\Controllers\Admin.php(77): CodeIgniter\BaseModel->save([...])
+10 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->simpanGuru()
+11 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+12 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 14:55:38 --> Undefined variable: namaFoto
+in APPPATH\Controllers\Admin.php on line 191.
+ 1 APPPATH\Controllers\Admin.php(191): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: namaFoto', 'APPPATH\\Controllers\\Admin.php', 191, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->simpanSiswa()
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 16:03:42 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Admin.php on line 210.
+ 1 APPPATH\Controllers\Admin.php(210): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Admin.php', 210, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->hapusSiswa('61')
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 16:04:41 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Admin.php on line 210.
+ 1 APPPATH\Controllers\Admin.php(210): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Admin.php', 210, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->hapusSiswa('61')
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 16:08:04 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Admin.php on line 210.
+ 1 APPPATH\Controllers\Admin.php(210): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Admin.php', 210, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->hapusSiswa('61')
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 16:08:47 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Admin.php on line 210.
+ 1 APPPATH\Controllers\Admin.php(210): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Admin.php', 210, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->hapusSiswa('61')
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 16:09:31 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Admin.php on line 210.
+ 1 APPPATH\Controllers\Admin.php(210): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Admin.php', 210, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->hapusSiswa('61')
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 16:51:33 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('16')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 16:52:02 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('16')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 16:52:17 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('16')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 17:00:54 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Admin.php on line 210.
+ 1 APPPATH\Controllers\Admin.php(210): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Admin.php', 210, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->hapusSiswa('61')
+ 3 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 17:07:24 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('19')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 17:08:01 --> Return value of CodeIgniter\BaseModel::transformDataToArray() must be of the type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1598.
+ 1 SYSTEMPATH\BaseModel.php(832): CodeIgniter\BaseModel->transformDataToArray('default-l.png', 'update')
+ 2 SYSTEMPATH\Model.php(692): CodeIgniter\BaseModel->update([...], 'default-l.png')
+ 3 APPPATH\Controllers\Admin.php(649): CodeIgniter\Model->update('19', 'default-l.png')
+ 4 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('19')
+ 5 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 17:14:11 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('19')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 17:15:13 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('19')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 17:17:08 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('19')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 17:17:15 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('19')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 17:21:46 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('19')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
+CRITICAL - 2022-07-09 17:24:07 --> Call to a member function getError() on null
+in APPPATH\Controllers\Admin.php on line 590.
+ 1 SYSTEMPATH\CodeIgniter.php(896): App\Controllers\Admin->updateSiswa('19')
+ 2 SYSTEMPATH\CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(43): require_once('FCPATH\\index.php')
