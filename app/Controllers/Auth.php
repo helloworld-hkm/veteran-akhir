@@ -133,12 +133,14 @@ class Auth extends BaseController
 
 
             if ($cek) {
+               
                 $pass = $cek['password'];
                 // dd($cek);
                 $verify_pass = password_verify($password, $pass);
                 // dd($verify_pass);
                 if ($verify_pass) {
                     session()->set('log', true);
+                    session()->set('id_user',$cek['id']);
                     session()->set('username', $cek['username']);
 
                     session()->set('role', $cek['role_id']);
