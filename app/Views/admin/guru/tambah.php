@@ -37,7 +37,7 @@
 
                         </div>
                         <div class="card-body">
-                            <form action="<?= base_url('/admin/simpanGuru') ?>" method="post" autocomplete="off">
+                            <form action="<?= base_url('/admin/simpanGuru') ?>" method="post" autocomplete="off"enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
                                 <div class="row form-group">
                                     <div class="col-6">
@@ -46,10 +46,7 @@
                                             <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="nik" required autofocus <?php if (session('errors.nama_mapel')) : ?>is-invalid<?php endif ?> value="<?= old('nama_mapel') ?>">
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="id_mengajar">Id Mengajar :</label>
-                                            <input type="text" class="form-control" name="id_mengajar" required autofocus>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="nama">Nama :</label>
                                             <input type="text" class="form-control" name="nama" required autofocus>

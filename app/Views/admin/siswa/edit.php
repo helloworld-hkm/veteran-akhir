@@ -39,7 +39,7 @@
             </div>
             <div class="card-body">
 
-              <form action="<?= base_url('/admin/updateSiswa/' . $id->id) ?>" method="post" autocomplete="off">
+              <form action="<?= base_url('/admin/updateSiswa/' . $id->id) ?>" method="post" autocomplete="off" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
 
                 <input type="hidden" name="_method" value="PUT">

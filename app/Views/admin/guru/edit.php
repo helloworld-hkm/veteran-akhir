@@ -11,8 +11,9 @@
             </div>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="/admin">Dashboard</a></div>
-                <div class="breadcrumb-item">Registrasi</a></div>
-                <div class="breadcrumb-item">Guru</div>
+                <div class="breadcrumb-item">Data Master</a></div>
+        <div class="breadcrumb-item"><a href="/admin">Guru</a></div>
+        <div class="breadcrumb-item">Edit Data</div>
             </div>
         </div>
         <?php if (session()->getFlashdata('is_unique')) : ?>
@@ -33,17 +34,17 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Registrasi data Guru</h4>
+                            <h4>Edit data Guru</h4>
 
                         </div>
                         <div class="card-body">
-                            <form action="<?= base_url('/admin/simpanGuru') ?>" method="post" autocomplete="off">
+                            <form action="<?= base_url('/admin/updateGuru') ?>" method="post" autocomplete="off"enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
                                 <div class="row form-group">
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="nik">Nik :</label>
-                                            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="nik" required autofocus <?php if (session('errors.nama_mapel')) : ?>is-invalid<?php endif ?> value="<?= old('nama_mapel') ?>">
+                                            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="nik" required autofocus <?php if (session('errors.nama_mapel')) : ?>is-invalid<?php endif ?> value="<?= old('nik') ?>">
                                         </div>
 
                                         <div class="form-group">

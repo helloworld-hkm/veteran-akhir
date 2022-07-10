@@ -12,7 +12,25 @@
         <div class="breadcrumb-item">Guru</div>
       </div>
     </div>
-
+    <?php if (session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success alert-dismissible show fade">
+        <div class="alert-body">
+          <button class="close" data-dismiss>x</button>
+          <b><i class="fa fa-check"></i></b>
+          <?= session()->getFlashdata('success') ?>
+        </div>
+      </div>
+    <?php endif; ?>
+    <!-- flash data tidak ditemukan -->
+    <?php if (session()->getFlashdata('eror')) : ?>
+      <div class="alert alert-danger alert-dismissible show fade">
+        <div class="alert-body">
+          <button class="close" data-dismiss>x</button>
+          <b><i class="fa fa-exclamation-triangle"></i></b>
+          <?= session()->getFlashdata('eror') ?>
+        </div>
+      </div>
+    <?php endif; ?>
     <div class="section-body">
 
 
@@ -53,7 +71,8 @@
 
                         <td><a href="<?= base_url('admin/editGuru/' . $gru->id) ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
                         <td>
-                          <form action="<?= base_url('admin/hapusGuru/' . $gru->id) ?>" method="post" onsubmit="return confirm('yakin ingin hapus data?')">
+                         
+                          <form action="<?= base_url('admin/hapusGuru/' . $gru->user_id) ?>" method="post" onsubmit="return confirm('yakin ingin hapus data?')">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="btn btn-danger">
