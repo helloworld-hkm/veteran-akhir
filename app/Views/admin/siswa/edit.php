@@ -126,7 +126,7 @@
                       </div>
                       <div class="form-group">
                         <label for="foto">Foto :</label>
-                        <input type="file" class="form-control" name="foto" autofocus <?php if (session('errors.nama_mapel')) : ?>is-invalid<?php endif ?> value="">
+                        <input type="file" class="form-control" name="foto" autofocus  value="">
                       </div>
                     </div>
                   </div>
