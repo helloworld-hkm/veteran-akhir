@@ -49,7 +49,6 @@ $routes->get('admin/editMapel/(:num)', 'Admin::editMapel/$1',['filter' => 'filte
 $routes->put('admin/updateMapel/(:num)', 'Admin::updateMapel/$1',['filter' => 'filterAdmin']);
 $routes->delete('admin/hapusMapel/(:num)', 'Admin::hapusMapel/$1',['filter' => 'filterAdmin']);
 
-$routes->get('admin/tambahSoal', 'Admin::tambahSoal',['filter' => 'filterAdmin']);
 // jurusan
 $routes->get('admin/jurusan', 'Admin::jurusan');
 

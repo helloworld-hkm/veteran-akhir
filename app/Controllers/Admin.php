@@ -177,13 +177,7 @@ class Admin extends BaseController
                     'is_image' => 'yang anda pilih bukan gambar',
                     'mime_in' => 'yang anda pilih bukan gambar'
                 ]
-            ]
-
-          
-
-              
-         
-
+                ],
         ]);
         if ($valid) {
             $data = [
@@ -227,13 +221,12 @@ class Admin extends BaseController
                 'agama' => $this->request->getPost('agama'),
                 'no_hp' => $this->request->getPost('no_hp'),
                 'alamat' => $this->request->getPost('alamat'),
-<<<<<<< HEAD
+
                 'foto' => $guruFoto,
 
-=======
+
 
                 'foto' => $namaFoto,
->>>>>>> 19b681844715368623c045ff4be7bd2ad4a2bb5b
 
             ];
             $this->ModelGuru->save($dataGuru);

@@ -39,7 +39,7 @@
             </div>
             <div class="card-body">
 
-              <form action="<?= base_url('/admin/updateSiswa/' . $id->id) ?>" method="post" autocomplete="off" enctype="multipart/form-data">
+              <form action="<?= base_url('/admin/updateSiswa/' . $id->id) ?>" method="post" autocomplete="off">
                 <?= csrf_field(); ?>
 
                 <input type="hidden" name="_method" value="PUT">
@@ -126,7 +126,7 @@
                       </div>
                       <div class="form-group">
                         <label for="foto">Foto :</label>
-                        <input type="file" class="form-control" name="foto" autofocus  value="">
+                        <input type="file" class="form-control" name="foto" autofocus <?php if (session('errors.nama_mapel')) : ?>is-invalid<?php endif ?> value="">
                       </div>
                     </div>
                   </div>

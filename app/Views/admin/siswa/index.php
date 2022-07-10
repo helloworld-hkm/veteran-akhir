@@ -55,10 +55,7 @@
                       <th class="text-center">
                         #
                       </th>
-                      <th>NISN</th>
                       <th>Nama Siswa</th>
-                      <th>Kelas</th>
-                      <th>No Hp</th>
                       <th>Edit</th>
                       <th>Hapus</th>
 
@@ -76,11 +73,7 @@
                         <td class="text-center">
                           <?= $key + 1 ?>
                         </td>
-                        <td><?= $ss->username ?></td>
                         <td><?= $ss->nama ?></td>
-                        <td><?= $ss->nama_kelas ?></td>
-                        <td><?= $ss->no_hp ?></td>
-
 
 
 
