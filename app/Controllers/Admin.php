@@ -65,6 +65,14 @@ class Admin extends BaseController
                     'required', 'password harus diisi'
                 ]
 
+            ],
+            'foto' => [
+                'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran Gambar Terlalu Besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar'
+                ]
             ]
 
         ]);
@@ -78,10 +86,29 @@ class Admin extends BaseController
             $id_guru = $this->db->table('user')->where([
                 'username' => $this->request->getVar('username')
             ])->get()->getRowArray();
+            $foto = $this->request->getFile('foto');
+            if ($foto->getError() == 4) {
+                $guruFoto = ('jenis_kelamin') == '1' ? 'default-p.png' : 'default-l.png';
+            } else {
+                $foto->move('img/guru');
+                $guruFoto = $foto->getName();
+            }
             // dd($id_siswa);
             $dataGuru = [
                 'user_id' => $id_guru['id'],
-                'nama' => $this->request->getPost('nama')
+
+                'nisn' => $this->request->getPost('nik'),
+                'nama' => $this->request->getPost('nama'),
+                'id_mengajar' => $this->request->getVar('guru-mapel'),
+                'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+                'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
+
+                'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+                'agama' => $this->request->getPost('agama'),
+                'no_hp' => $this->request->getPost('no_hp'),
+                'alamat' => $this->request->getPost('alamat'),
+                'foto' => $guruFoto,
+
 
             ];
             $this->ModelAuth->guru($dataGuru);
@@ -97,9 +124,12 @@ class Admin extends BaseController
 
     public function registerGuru()
     {
+        $builder = $this->db->table('guru-mapel')->join('mapel', 'guru-mapel.id_mapel = mapel.id');
+        $query = $builder->get();
         $data = [
             'title' => 'register guru',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'guru-mapel' => $query->getresult()
         ];
         return view('admin/guru/tambah', $data);
     }
@@ -155,7 +185,6 @@ class Admin extends BaseController
                 'password' => password_hash($this->request->getPost('nisn'), PASSWORD_DEFAULT),
                 'role_id' => 2
             ];
-
             $this->ModelAuth->save($data);
             $id_siswa = $this->db->table('user')->where([
                 'username' => $this->request->getVar('nisn')
