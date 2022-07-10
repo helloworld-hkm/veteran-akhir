@@ -16,7 +16,7 @@ class Siswa extends BaseController
        
         $builder = $this->db->table('ulangan');
         $query   = $builder->get();
-       
+   
         $data=[
             'title'=>'siswa',
             'ulangan'=>$query->getResult(),

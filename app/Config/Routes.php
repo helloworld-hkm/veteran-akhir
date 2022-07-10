@@ -37,11 +37,13 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Auth::Index',['filter' => 'noauth']);
+$routes->get('/siswa', 'asd::index');
 // mapel
 $routes->get('admin/mapel', 'Admin::mapel');
 $routes->get('/admin', 'Admin::Index',['filter' => 'filterAdmin']);
 // $routes->get('admin/mapel', 'Admin::mapel',['filter' => 'filterAdmin']);
 $routes->get('admin/tambahMapel', 'Admin::tambahMapel',['filter' => 'filterAdmin']);
+$routes->get('admin/tambahUlangan', 'Admin::tambahUlangan',['filter' => 'filterAdmin']);
 $routes->post('admin/simpanMapel', 'Admin::simpanMapel',['filter' => 'filterAdmin']);
 $routes->get('admin/editMapel/(:num)', 'Admin::editMapel/$1',['filter' => 'filterAdmin']);
 $routes->put('admin/updateMapel/(:num)', 'Admin::updateMapel/$1',['filter' => 'filterAdmin']);
@@ -50,7 +52,7 @@ $routes->delete('admin/hapusMapel/(:num)', 'Admin::hapusMapel/$1',['filter' => '
 $routes->get('admin/tambahSoal', 'Admin::tambahSoal',['filter' => 'filterAdmin']);
 // jurusan
 $routes->get('admin/jurusan', 'Admin::jurusan');
-$routes->get('/siswa', 'Siswa::Index',['filter' => 'filterSiswa']);
+
 
 
 

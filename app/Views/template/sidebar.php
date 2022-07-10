@@ -33,15 +33,7 @@
               
                 </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-clipboard"></i> <span>Ulangan</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="<?=base_url()?>/admin/soal">Bank soal</a></li>
-                  <li><a class="nav-link" href="bootstrap-badge.html">Ulangan</a></li>
-               
-              
-                </ul>
-              </li>
+              <li><a class="nav-link" href="<?=base_url()?>/admin/ulangan"><i class="fas fa-clipboard"></i> <span>Ulangan</span></a></li>
               <li><a class="nav-link" href="<?=base_url()?>/admin/soal"><i class="fas fa-th-large"></i> <span>Bank Soal</span></a></li>
               
               <li class="menu-header">Laporan</li>

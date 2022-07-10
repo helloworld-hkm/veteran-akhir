@@ -142,11 +142,11 @@ class Auth extends BaseController
                     session()->set('log', true);
                     session()->set('id_user',$cek['id']);
                     session()->set('username', $cek['username']);
-
                     session()->set('role', $cek['role_id']);
                     //success
-                    if ($cek['role_id'] == 1) {
-                        # code...
+                    if ($cek['role_id'] == 2) {
+                        return redirect()->to(base_url('siswa'));
+                    } else {
                     }
                     return redirect()->to(base_url('admin'));
                 } else {
@@ -163,6 +163,7 @@ class Auth extends BaseController
     }
     public function logout()
     {
+        session()->destroy();
         session()->remove('log');
         session()->remove('username');
         session()->remove('role');

@@ -37,95 +37,109 @@
 
             </div>
             <div class="card-body">
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">judul</label>
-                      <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mapel</label>
-                      <div class="col-sm-12 col-md-7">
-                        <select class="form-control selectric">
-                          <option>Tech</option>
-                          <option>News</option>
-                          <option>Political</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kelas</label>
-                      <div class="col-sm-12 col-md-7">
-                        <select class="form-control selectric">
-                          <option>Tech</option>
-                          <option>News</option>
-                          <option>Political</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Guru</label>
-                      <div class="col-sm-12 col-md-7">
-                        <select class="form-control selectric">
-                          <option>Tech</option>
-                          <option>News</option>
-                          <option>Political</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Soal</label>
-                      <div class="col-sm-12 col-md-7">
-                        <textarea class="summernote-simple"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi A</label>
-                      <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi B</label>
-                      <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi C</label>
-                      <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi D</label>
-                      <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi E</label>
-                      <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kunci Jawaban</label>
-                      <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                      <div class="col-sm-12 col-md-7">
-                        <button class="btn btn-primary">Publish</button>
-                      </div>
-                    </div>
+              <form action="<?= base_url('/admin/simpanSoal') ?>" method="post" autocomplete="off">
+                <?= csrf_field(); ?>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mapel</label>
+                  <div class="col-sm-12 col-md-7">
+                    <select class="form-control selectric" name="mapel" required autofocus>
+                      <option selected disabled value="">-- pilih Mapel --</option>
+
+                      <?php foreach ($mapel as $key => $m) { ?>
+                        <option  value="<?= $m->id ?>"><?= $m->nama_mapel ?></option>
+                      <?php } ?>
+                    </select>
                   </div>
-          </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kelas</label>
+                  <div class="col-sm-12 col-md-7">
+
+
+
+                    <select class="form-control selectric" name="kelas" required>
+                      <option selected disabled value="">-- pilih kelas --</option>
+
+                      <?php foreach ($kelas as $key => $kel) { ?>
+                        <option  value="<?= $kel->id_kelas ?>"><?= $kel->nama_kelas ?></option>
+                      <?php } ?>
+                    </select>
+
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Guru</label>
+                  <div class="col-sm-12 col-md-7">
+                    <select class="form-control selectric" name="guru" required>
+                      <option selected disabled value="">-- pilih Guru --</option>
+
+                      <?php foreach ($guru as $key => $g) { ?>
+                        <option  value="<?= $g->id ?>"><?= $g->nama ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Soal</label>
+                  <div class="col-sm-12 col-md-7">
+                    <textarea class="summernote-simple" name="soal" required></textarea>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi A</label>
+                  <div class="col-sm-12 col-md-7">
+                    <input type="text" class="form-control" name="a" required>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi B</label>
+                  <div class="col-sm-12 col-md-7">
+                    <input type="text" class="form-control" name="b" required>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi C</label>
+                  <div class="col-sm-12 col-md-7">
+                    <input type="text" class="form-control" name="c" required>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi D</label>
+                  <div class="col-sm-12 col-md-7">
+                    <input type="text" class="form-control" name="d" required>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opsi E</label>
+                  <div class="col-sm-12 col-md-7">
+                    <input type="text" class="form-control" name="e" required>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jawaban</label>
+                  <div class="col-sm-12 col-md-7">
+                    <select class="form-control selectric" required>
+                      <option selected disabled value="">-- pilih Jawaban --</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                  <div class="col-sm-12 col-md-7">
+                    <button class="btn btn-primary">Simpan</button>
+                  </div>
+                </div>
+              </form>
+              </div>
           </div>
         </div>
       </div>
+    </div>
 
     </div>
   </section>

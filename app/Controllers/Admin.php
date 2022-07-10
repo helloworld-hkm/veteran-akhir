@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\ModelAuth;
 use App\Models\ModelSiswa;
 use App\Models\ModelGuru;
+
 class Admin extends BaseController
 {
     public function __Construct()
@@ -48,33 +49,108 @@ class Admin extends BaseController
 
         return view('admin/home', $data);
     }
- 
+
     public function soal()
     {
-        $builder=$this->db->table('soal');
-        $builder->join('guru','guru.id=soal.guru');
-        $builder->join('mapel','mapel.id=soal.mapel');
-        $builder->join('kelas','kelas.id_kelas=soal.kelas');
+        $builder = $this->db->table('soal');
+        $builder->join('guru', 'guru.id=soal.guru');
+        $builder->join('mapel', 'mapel.id=soal.mapel');
+        $builder->join('kelas', 'kelas.id_kelas=soal.kelas');
         $builder->select('mapel.nama_mapel,guru.nama,kelas.nama_kelas,soal.id_soal,soal.soal');
-        $query=$builder->get()->getResult();
-        
-        $data=[
-            'title'=>'bank soal',
-            'soal'=>$query
+        $query = $builder->get()->getResult();
+
+        $data = [
+            'title' => 'bank soal',
+            'soal' => $query
         ];
-        return view('admin/soal/index',$data);
+        return view('admin/soal/index', $data);
+    }
+    public function ulangan()
+    {
+        $builder = $this->db->table('ulangan');
+        $builder->join('guru', 'guru.id=ulangan.id_guru');
+        $builder->join('mapel', 'mapel.id=ulangan.id_mapel');
+        $builder->join('kelas', 'kelas.id_kelas=ulangan.id_kelas');
+        $builder->select('ulangan.*,mapel.*,guru.nama,guru.id,kelas.nama_kelas,kelas.id_kelas');
+        $query = $builder->get()->getResult();
+
+        $data = [
+            'title' => 'Daftar Ulangan',
+            'ulangan' => $query
+        ];
+        return view('admin/ulangan/index', $data);
     }
     public function tambahSoal()
     {
+        $builder = $this->db->table('mapel')->get()->getResult();
+        $builder1 = $this->db->table('kelas')->get()->getResult();
+        $builder2 = $this->db->table('guru')->get()->getResult();
         $data = [
             'title' => 'Tambah Soal',
-         
+            'mapel' => $builder,
+            'guru' => $builder2,
+            'kelas' => $builder1,
 
         ];
 
+
         return view('admin/soal/tambah', $data);
     }
+    public function tambahUlangan()
+    {
+        $builder = $this->db->table('mapel')->get()->getResult();
+        $builder1 = $this->db->table('kelas')->get()->getResult();
+        $builder2 = $this->db->table('guru')->get()->getResult();
+        $data = [
+            'title' => 'Tambah Ulangan',
+            'mapel' => $builder,
+            'guru' => $builder2,
+            'kelas' => $builder1,
 
+        ];
+
+
+        return view('admin/ulangan/tambah', $data);
+    }
+    
+
+    public function simpanUlangan()
+    {
+        $data = [
+            
+            'id_mapel' => $this->request->getVar('mapel'),
+            'id_kelas' => $this->request->getVar('kelas'),
+            'id_guru' => $this->request->getVar('guru'),
+            'waktu' => $this->request->getVar('waktu'),
+            'tanggal' => $this->request->getVar('tanggal'),
+            
+            
+            ];
+        $this->db->table('ulangan')->insert($data);
+        if ($this->db->affectedRows() > 0) {
+            return redirect()->to(base_url('/admin/ulangan'))->with('success', 'Data Berhasil Disimpan!');
+        }
+    }
+    public function simpanSoal()
+    {
+        $data = [
+            'soal' => $this->request->getVar('soal'),
+            'mapel' => $this->request->getVar('mapel'),
+            'kelas' => $this->request->getVar('kelas'),
+            'guru' => $this->request->getVar('guru'),
+            'opsi_a' => $this->request->getVar('a'),
+            'opsi_b' => $this->request->getVar('b'),
+            'opsi_c' => $this->request->getVar('c'),
+            'opsi_d' => $this->request->getVar('d'),
+            'opsi_e' => $this->request->getVar('e'),
+            'jawaban' => $this->request->getVar('jwb'),
+            
+            ];
+        $this->db->table('soal')->insert($data);
+        if ($this->db->affectedRows() > 0) {
+            return redirect()->to(base_url('/admin/soal'))->with('success', 'Data Berhasil Disimpan!');
+        }
+    }
     public function simpanGuru()
     {
         $valid = $this->validate([
@@ -92,7 +168,7 @@ class Admin extends BaseController
                     'required', 'password harus diisi'
                 ]
 
-                ],
+            ],
             'foto' => [
                 'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
                 'errors' => [
@@ -158,7 +234,7 @@ class Admin extends BaseController
     public function hapusGuru($id)
     {
         $this->db->table('guru')->where(['user_id' => $id])->delete();
-       
+
         $this->db->table('user')->where(['id' => $id])->delete();
         return redirect()->to(base_url('/admin/guru'))->with('success', 'Data Berhasil Dihapus!');
     }
@@ -273,7 +349,7 @@ class Admin extends BaseController
     {
         $data['title'] = 'Data Guru';
         $builder = $this->db->table('guru');
-        $builder->join('user','guru.user_id=user.id');
+        $builder->join('user', 'guru.user_id=user.id');
         $builder->select('guru.id, guru.nama, user.username,guru.user_id');
         $query = $builder->get();
         $data['guru'] = $query->getResult();
@@ -285,8 +361,8 @@ class Admin extends BaseController
         $builder = $this->db->table('siswa');
 
         // $builder->from('siswa,user,kelas');
-        $builder->join('user','siswa.user_id=user.id');
-        $builder->join('kelas','siswa.id_kelas=kelas.id_kelas');
+        $builder->join('user', 'siswa.user_id=user.id');
+        $builder->join('kelas', 'siswa.id_kelas=kelas.id_kelas');
         $builder->select('siswa.id, siswa.nama, user.username,kelas.nama_kelas,siswa.no_hp,siswa.user_id');
         $query   = $builder->get();
         $data['siswa'] = $query->getResult();
@@ -654,7 +730,7 @@ class Admin extends BaseController
             $validation = \Config\Services::validation();
             return redirect()->to('/admin/editSiswa/' . $id)->with('is_unique', 'Data Siswa Sudah Ada!!!')->withInput();
         }
-  
+
         $foto = $this->request->getFile('foto');
         if ($foto->getError() == 4) {
             $namaFoto = ('jenis_kelamin') == '1' ? 'default-p.png' : 'default-l.png';
@@ -677,7 +753,7 @@ class Admin extends BaseController
                 'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
             ];
         } else {
-            $datasiswa =[
+            $datasiswa = [
                 'nama' => $this->request->getPost('nama'),
                 'id_kelas' => $this->request->getVar('kelas'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
@@ -726,7 +802,7 @@ class Admin extends BaseController
 
     public function editGuru($id = null)
     {
-        
+
         $data['title'] = "Edit Guru";
         // if ($id != null) {
         //     $query = $this->db->table('guru')->getWhere(['id' => $id]);
@@ -740,18 +816,18 @@ class Admin extends BaseController
         //     return redirect()->to(base_url('/admin/guru'))->with('eror', 'Data Tidak Ditemukan!');
         // }
         $query = $this->db->table('guru')->join('user', 'user.id=guru.user_id')->getWhere(['guru.id' => $id]);
-     
+
         if ($query->resultID->num_rows > 0) {
-                $data = [
-                    'title' => 'Edit Guru',
-                    'validation' => \Config\Services::validation(),
-                    'guru' => $query->getRow(),
-                    'id' => $this->db->table('guru')->getWhere(['guru.id' => $id])->getRow()
-                ];
-                return view('admin/guru/edit', $data);
-            } else {
-                return redirect()->to(base_url('/guru/siswa'))->with('eror', 'Data Tidak Ditemukan!');
-            }
+            $data = [
+                'title' => 'Edit Guru',
+                'validation' => \Config\Services::validation(),
+                'guru' => $query->getRow(),
+                'id' => $this->db->table('guru')->getWhere(['guru.id' => $id])->getRow()
+            ];
+            return view('admin/guru/edit', $data);
+        } else {
+            return redirect()->to(base_url('/guru/siswa'))->with('eror', 'Data Tidak Ditemukan!');
+        }
     }
 
     public function updateGuru($id)
@@ -767,9 +843,9 @@ class Admin extends BaseController
             return redirect()->to('/admin/editGuru/' . $id)->with('is_unique', 'Data Guru Sudah Ada!!!')->withInput();
         }
         $data = [
-           
+
             'nama' => $this->request->getPost('nama'),
-          
+
             'tempat_lahir' => $this->request->getPost('tempat_lahir'),
             'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
             'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
