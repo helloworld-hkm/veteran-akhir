@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ModelAuth;
 use App\Models\ModelSiswa;
-
+use App\Models\ModelGuru;
 class Admin extends BaseController
 {
     public function __Construct()
@@ -12,6 +12,7 @@ class Admin extends BaseController
         helper('form');
         $this->ModelAuth = new ModelAuth();
         $this->ModelSiswa = new ModelSiswa();
+        $this->ModelGuru = new ModelGuru();
     }
 
     public function index()
@@ -47,6 +48,32 @@ class Admin extends BaseController
 
         return view('admin/home', $data);
     }
+ 
+    public function soal()
+    {
+        $builder=$this->db->table('soal');
+        $builder->join('guru','guru.id=soal.guru');
+        $builder->join('mapel','mapel.id=soal.mapel');
+        $builder->join('kelas','kelas.id_kelas=soal.kelas');
+        $builder->select('mapel.nama_mapel,guru.nama,kelas.nama_kelas,soal.id_soal,soal.soal');
+        $query=$builder->get()->getResult();
+        
+        $data=[
+            'title'=>'bank soal',
+            'soal'=>$query
+        ];
+        return view('admin/soal/index',$data);
+    }
+    public function tambahSoal()
+    {
+        $data = [
+            'title' => 'Tambah Soal',
+         
+
+        ];
+
+        return view('admin/soal/tambah', $data);
+    }
 
     public function simpanGuru()
     {
@@ -65,7 +92,11 @@ class Admin extends BaseController
                     'required', 'password harus diisi'
                 ]
 
+<<<<<<< HEAD
             ],
+=======
+                ],
+>>>>>>> 19b681844715368623c045ff4be7bd2ad4a2bb5b
             'foto' => [
                 'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
                 'errors' => [
@@ -78,13 +109,13 @@ class Admin extends BaseController
         ]);
         if ($valid) {
             $data = [
-                'username' => $this->request->getPost('username'),
-                'password' => password_hash($this->request->getPost('username'), PASSWORD_DEFAULT),
+                'username' => $this->request->getPost('nik'),
+                'password' => password_hash($this->request->getPost('nik'), PASSWORD_DEFAULT),
                 'role_id' => 3
             ];
             $this->ModelAuth->save($data);
             $id_guru = $this->db->table('user')->where([
-                'username' => $this->request->getVar('username')
+                'username' => $this->request->getVar('nik')
             ])->get()->getRowArray();
             $foto = $this->request->getFile('foto');
             if ($foto->getError() == 4) {
@@ -94,12 +125,23 @@ class Admin extends BaseController
                 $guruFoto = $foto->getName();
             }
             // dd($id_siswa);
+            $foto = $this->request->getFile('foto');
+            if ($foto->getError() == 4) {
+                $namaFoto = ('jenis_kelamin') == '1' ? 'default-p.png' : 'default-l.png';
+            } else {
+                $foto->move('img/guru');
+                $namaFoto = $foto->getName();
+            }
             $dataGuru = [
                 'user_id' => $id_guru['id'],
+<<<<<<< HEAD
 
                 'nisn' => $this->request->getPost('nik'),
                 'nama' => $this->request->getPost('nama'),
                 'id_mengajar' => $this->request->getVar('guru-mapel'),
+=======
+                'nama' => $this->request->getPost('nama'),
+>>>>>>> 19b681844715368623c045ff4be7bd2ad4a2bb5b
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
 
@@ -107,13 +149,18 @@ class Admin extends BaseController
                 'agama' => $this->request->getPost('agama'),
                 'no_hp' => $this->request->getPost('no_hp'),
                 'alamat' => $this->request->getPost('alamat'),
+<<<<<<< HEAD
                 'foto' => $guruFoto,
 
+=======
+
+                'foto' => $namaFoto,
+>>>>>>> 19b681844715368623c045ff4be7bd2ad4a2bb5b
 
             ];
-            $this->ModelAuth->guru($dataGuru);
+            $this->ModelGuru->save($dataGuru);
 
-            session()->setFlashdata('pesan', 'register berhasil');
+            session()->setFlashdata('success', 'register berhasil');
             return redirect()->to(base_url('Admin/guru/'));
         } else {
 
@@ -136,7 +183,9 @@ class Admin extends BaseController
 
     public function hapusGuru($id)
     {
-        $this->db->table('guru')->where(['id' => $id])->delete();
+        $this->db->table('guru')->where(['user_id' => $id])->delete();
+       
+        $this->db->table('user')->where(['id' => $id])->delete();
         return redirect()->to(base_url('/admin/guru'))->with('success', 'Data Berhasil Dihapus!');
     }
 
@@ -224,7 +273,7 @@ class Admin extends BaseController
             // dd($dataSiswa);
             $this->ModelSiswa->save($dataSiswa);
 
-            session()->setFlashdata('pesan', 'register berhasil');
+            session()->setFlashdata('success', 'register berhasil');
             return redirect()->to(base_url('Admin/siswa/'));
         } else {
 
@@ -249,6 +298,8 @@ class Admin extends BaseController
     {
         $data['title'] = 'Data Guru';
         $builder = $this->db->table('guru');
+        $builder->join('user','guru.user_id=user.id');
+        $builder->select('guru.id, guru.nama, user.username,guru.user_id');
         $query = $builder->get();
         $data['guru'] = $query->getResult();
         return view('admin/guru/index', $data);
@@ -257,8 +308,14 @@ class Admin extends BaseController
     {
         $data['title'] = 'Data Siswa';
         $builder = $this->db->table('siswa');
+
+        // $builder->from('siswa,user,kelas');
+        $builder->join('user','siswa.user_id=user.id');
+        $builder->join('kelas','siswa.id_kelas=kelas.id_kelas');
+        $builder->select('siswa.id, siswa.nama, user.username,kelas.nama_kelas,siswa.no_hp,siswa.user_id');
         $query   = $builder->get();
         $data['siswa'] = $query->getResult();
+        // dd($data['siswa']);
 
         return view('admin/siswa/index', $data);
     }
@@ -605,77 +662,85 @@ class Admin extends BaseController
     public function updateSiswa($id = 0)
     {
         $data = $this->request->getPost();
-        // if (!$this->validate([
+        if (!$this->validate([
 
-        //     'nama' => ['rules' => 'required|is_unique[siswa.nama]', 'errors' => ['is_unique' => 'data Siswa Sudah Ada!!', 'required' => 'NISN wajib diisi!!']]
-
-
-        // ])) {
-        //     $validation = \Config\Services::validation();
-        //     return redirect()->to('/admin/editSiswa/' . $id)->with('is_unique', 'Data Siswa Sudah Ada!!!')->withInput();
-        // }
-        $foto = $this->request->getPost('jenis_kelamin') == '1' ? 'default-l.png' : 'default-p.png';
-        // $foto = $this->request->getFile('foto');
-        // if ($foto->getError() == 4) {
-        //     $namaFoto = ('jenis_kelamin') == '1' ? 'default-p.png' : 'default-l.png';
-        // } else {
-        //     $foto->move('img/siswa');
-        //     $namaFoto = $foto->getName();
-        // }
-        // if ($foto->getError() == 9) {
-        //     $this->ModelSiswa->update($id, [
-        //         'nama' => $this->request->getPost('nama'),
-        //         'id_kelas' => $this->request->getVar('kelas'),
-        //         'tempat_lahir' => $this->request->getPost('tempat_lahir'),
-        //         'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
-
-        //         'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
-        //         'agama' => $this->request->getPost('agama'),
-        //         'no_hp' => $this->request->getPost('no_hp'),
-        //         'alamat' => $this->request->getPost('alamat'),
-        //         'nama_orangtua' => $this->request->getPost('nama_orangtua'),
-        //         'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
-        //     ]);
-        // } else {
-        //     $this->ModelSiswa->update($id, [
-        //         'nama' => $this->request->getPost('nama'),
-        //         'id_kelas' => $this->request->getVar('kelas'),
-        //         'tempat_lahir' => $this->request->getPost('tempat_lahir'),
-        //         'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
-
-        //         'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
-        //         'agama' => $this->request->getPost('agama'),
-        //         'no_hp' => $this->request->getPost('no_hp'),
-        //         'alamat' => $this->request->getPost('alamat'),
-        //         'nama_orangtua' => $this->request->getPost('nama_orangtua'),
-        //         'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
-        //         'foto' => $foto,
-        //     ]);
-        // }
-        $dataSiswa = [
+            // 'nama' => ['rules' => 'required|is_unique[siswa.nama]', 'errors' => ['is_unique' => 'data Siswa Sudah Ada!!', 'required' => 'NISN wajib diisi!!']],
+            'foto' => [
+                'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran Gambar Terlalu Besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar'
+                ]
+            ]
 
 
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/admin/editSiswa/' . $id)->with('is_unique', 'Data Siswa Sudah Ada!!!')->withInput();
+        }
+  
+        $foto = $this->request->getFile('foto');
+        if ($foto->getError() == 4) {
+            $namaFoto = ('jenis_kelamin') == '1' ? 'default-p.png' : 'default-l.png';
+        } else {
+            $foto->move('img/siswa');
+            $namaFoto = $foto->getName();
+        }
+        if ($foto->getError() == 4) {
+            $datasiswa = [
+                'nama' => $this->request->getPost('nama'),
+                'id_kelas' => $this->request->getVar('kelas'),
+                'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+                'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
 
-            'nama' => $this->request->getPost('nama'),
-            'id_kelas' => $this->request->getVar('kelas'),
-            'tempat_lahir' => $this->request->getPost('tempat_lahir'),
-            'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
+                'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+                'agama' => $this->request->getPost('agama'),
+                'no_hp' => $this->request->getPost('no_hp'),
+                'alamat' => $this->request->getPost('alamat'),
+                'nama_orangtua' => $this->request->getPost('nama_orangtua'),
+                'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
+            ];
+        } else {
+            $datasiswa =[
+                'nama' => $this->request->getPost('nama'),
+                'id_kelas' => $this->request->getVar('kelas'),
+                'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+                'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
 
-            'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
-            'agama' => $this->request->getPost('agama'),
-            'no_hp' => $this->request->getPost('no_hp'),
-            'alamat' => $this->request->getPost('alamat'),
-            'nama_orangtua' => $this->request->getPost('nama_orangtua'),
-            'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
-            'foto' => $foto,
+                'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+                'agama' => $this->request->getPost('agama'),
+                'no_hp' => $this->request->getPost('no_hp'),
+                'alamat' => $this->request->getPost('alamat'),
+                'nama_orangtua' => $this->request->getPost('nama_orangtua'),
+                'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
+                'foto' => $namaFoto,
+            ];
+        }
+        // $dataSiswa = [
 
 
-        ];
+
+        //     'nama' => $this->request->getPost('nama'),
+        //     'id_kelas' => $this->request->getVar('kelas'),
+        //     'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+        //     'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
+
+        //     'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+        //     'agama' => $this->request->getPost('agama'),
+        //     'no_hp' => $this->request->getPost('no_hp'),
+        //     'alamat' => $this->request->getPost('alamat'),
+        //     'nama_orangtua' => $this->request->getPost('nama_orangtua'),
+        //     'pekerjaan_orangtua' => $this->request->getPost('pekerjaan_orangtua'),
+        //     'foto' => $foto,
+
+
+        // ];
         // dd($dataSiswa);
 
-        unset($dataSiswa['_method']);
+        unset($datasiswa['_method']);
 
-        $this->ModelSiswa->update($id, $dataSiswa);
+        $this->ModelSiswa->update($id, $datasiswa);
 
         if ($this->db->affectedRows() > 0) {
             return redirect()->to(base_url('/admin/siswa'))->with('success', 'Data Berhasil Diubah!');
@@ -686,18 +751,32 @@ class Admin extends BaseController
 
     public function editGuru($id = null)
     {
+        
         $data['title'] = "Edit Guru";
-        if ($id != null) {
-            $query = $this->db->table('guru')->getWhere(['id' => $id]);
-            if ($query->resultID->num_rows > 0) {
-                $data['guru'] = $query->getRow();
+        // if ($id != null) {
+        //     $query = $this->db->table('guru')->getWhere(['id' => $id]);
+        //     if ($query->resultID->num_rows > 0) {
+        //         $data['guru'] = $query->getRow();
+        //         return view('admin/guru/edit', $data);
+        //     } else {
+        //         return redirect()->to(base_url('/admin/guru'))->with('eror', 'Data Tidak Ditemukan!');
+        //     }
+        // } else {
+        //     return redirect()->to(base_url('/admin/guru'))->with('eror', 'Data Tidak Ditemukan!');
+        // }
+        $query = $this->db->table('guru')->join('user', 'user.id=guru.user_id')->getWhere(['guru.id' => $id]);
+     
+        if ($query->resultID->num_rows > 0) {
+                $data = [
+                    'title' => 'Edit Guru',
+                    'validation' => \Config\Services::validation(),
+                    'guru' => $query->getRow(),
+                    'id' => $this->db->table('guru')->getWhere(['guru.id' => $id])->getRow()
+                ];
                 return view('admin/guru/edit', $data);
             } else {
-                return redirect()->to(base_url('/admin/guru'))->with('eror', 'Data Tidak Ditemukan!');
+                return redirect()->to(base_url('/guru/siswa'))->with('eror', 'Data Tidak Ditemukan!');
             }
-        } else {
-            return redirect()->to(base_url('/admin/guru'))->with('eror', 'Data Tidak Ditemukan!');
-        }
     }
 
     public function updateGuru($id)
@@ -713,7 +792,16 @@ class Admin extends BaseController
             return redirect()->to('/admin/editGuru/' . $id)->with('is_unique', 'Data Guru Sudah Ada!!!')->withInput();
         }
         $data = [
-            'nama' => ucwords($this->request->getVar('nama'))
+           
+            'nama' => $this->request->getPost('nama'),
+          
+            'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+            'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
+            'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+            'agama' => $this->request->getPost('agama'),
+            'no_hp' => $this->request->getPost('no_hp'),
+            'alamat' => $this->request->getPost('alamat')
+
 
         ];
         unset($data['_method']);
