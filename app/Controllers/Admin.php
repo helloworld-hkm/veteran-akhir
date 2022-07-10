@@ -168,6 +168,7 @@ class Admin extends BaseController
                     'required', 'password harus diisi'
                 ]
 
+
             ],
             'foto' => [
                 'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
@@ -177,6 +178,11 @@ class Admin extends BaseController
                     'mime_in' => 'yang anda pilih bukan gambar'
                 ]
             ]
+
+          
+
+              
+         
 
         ]);
         if ($valid) {
@@ -189,6 +195,13 @@ class Admin extends BaseController
             $id_guru = $this->db->table('user')->where([
                 'username' => $this->request->getVar('nik')
             ])->get()->getRowArray();
+            $foto = $this->request->getFile('foto');
+            if ($foto->getError() == 4) {
+                $guruFoto = ('jenis_kelamin') == '1' ? 'default-p.png' : 'default-l.png';
+            } else {
+                $foto->move('img/guru');
+                $guruFoto = $foto->getName();
+            }
             // dd($id_siswa);
             $foto = $this->request->getFile('foto');
             if ($foto->getError() == 4) {
@@ -199,7 +212,14 @@ class Admin extends BaseController
             }
             $dataGuru = [
                 'user_id' => $id_guru['id'],
+
+
+                'nisn' => $this->request->getPost('nik'),
                 'nama' => $this->request->getPost('nama'),
+                'id_mengajar' => $this->request->getVar('guru-mapel'),
+
+                'nama' => $this->request->getPost('nama'),
+
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
 
@@ -207,8 +227,13 @@ class Admin extends BaseController
                 'agama' => $this->request->getPost('agama'),
                 'no_hp' => $this->request->getPost('no_hp'),
                 'alamat' => $this->request->getPost('alamat'),
+<<<<<<< HEAD
+                'foto' => $guruFoto,
+
+=======
 
                 'foto' => $namaFoto,
+>>>>>>> 19b681844715368623c045ff4be7bd2ad4a2bb5b
 
             ];
             $this->ModelGuru->save($dataGuru);
@@ -224,9 +249,12 @@ class Admin extends BaseController
 
     public function registerGuru()
     {
+        $builder = $this->db->table('guru-mapel')->join('mapel', 'guru-mapel.id_mapel = mapel.id');
+        $query = $builder->get();
         $data = [
             'title' => 'register guru',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'guru-mapel' => $query->getresult()
         ];
         return view('admin/guru/tambah', $data);
     }
@@ -284,7 +312,6 @@ class Admin extends BaseController
                 'password' => password_hash($this->request->getPost('nisn'), PASSWORD_DEFAULT),
                 'role_id' => 2
             ];
-
             $this->ModelAuth->save($data);
             $id_siswa = $this->db->table('user')->where([
                 'username' => $this->request->getVar('nisn')
