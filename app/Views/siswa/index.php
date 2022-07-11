@@ -40,7 +40,6 @@
                           <th scope="col">#</th>
                           <th scope="col">Ulangan</th>
                         
-                          <th scope="col">Status</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -49,10 +48,10 @@
                         <?php foreach ($ulangan as $key => $ul) {?>
                           <tr>
                           <th scope="row"><?=$i++;?></th>
-                          <td>Teknik Komputer Dan Jaringan</td>
-                          <td><?=$ul->id_mapel?></td>
+                          <td><?=$ul->nama_mapel?></td>
+                         
                                  
-                          <td>  <a href="ulangan/kerjakan" class=" d-block btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Kerjakan dengan Jujur"><i class="fas fa-pencil-alt"></i>  Kerjakan</a>
+                          <td>  <a href="/ulangan/kerjakan/<?=$ul->id_kelas;?>/<?=$ul->id_mapel;?>" class=" d-block btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Kerjakan dengan Jujur"><i class="fas fa-pencil-alt"></i>  Kerjakan</a>
                           </td>
                         </tr>
                         <?php };?>

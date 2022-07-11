@@ -12,15 +12,21 @@ class Siswa extends BaseController
     }
     public function index()
     {
+    
         $this->data_user= $this->db->table('siswa')->where('user_id',session()->get('id_user'))->get()->getRow();
-       
+        session()->set('nama', $this->data_user->nama);
+        
         $builder = $this->db->table('ulangan');
-        $query   = $builder->get();
-   
+        $query   = $builder->join('mapel','mapel.id=ulangan.id_mapel')->get();
+        // $id_siswa=$this->data_user->id;
+        // $jadwal=$this->db->query("SELECT ulangan.*, (SELECT count(id_tes) FROM ikut_ulangan WHERE ikut_ulangan.id_siswa=". $this->data_user->id." AND ikut_ulangan.id_ulangan=ulangan.id_ulangan) AS sudah_ikut, (SELECT id_mapel FROM mapel WHERE mapel.id=ulangan.id_mapel) AS mapel, (SELECT status FROM ikut_ulangan WHERE ikut_ulangan.id_siswa=".$this->data_user->id." AND ikut_ulangan.id_ulangan=ulangan.id_ulangan) AS status FROM ulangan, siswa WHERE ulangan.id_kelas=siswa.id_kelas AND siswa.id=".$this->data_user->id." ORDER BY sudah_ikut ASC;");
+    
         $data=[
             'title'=>'siswa',
             'ulangan'=>$query->getResult(),
-            'siswa'=> $this->data_user
+            'siswa'=> $this->data_user,
+            
+            
     ];
 
         return view('siswa/index',$data);

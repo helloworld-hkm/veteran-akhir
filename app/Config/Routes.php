@@ -56,6 +56,7 @@ $routes->get('admin/jurusan', 'Admin::jurusan');
 
 
 $routes->get('/guru', 'Guru::Index',['filter' => 'filterGuru']);
+$routes->get('/ulangan/kerjakan/(:any)/(:num)', 'Ulangan::kerjakan/$1/$2',['filter' => 'filterSiswa']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
