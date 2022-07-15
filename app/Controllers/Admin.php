@@ -96,6 +96,38 @@ class Admin extends BaseController
 
         return view('admin/soal/tambah', $data);
     }
+    public function salinSoal($id = null)
+    {
+        $data['title'] = "Salin soal";
+        if ($id != null) {
+            $query = $this->db->table('soal')->getWhere(['id_soal' => $id]);
+            $data1['soal'] = $query->getRow();
+            // dd($data1);
+            $data = [
+                'soal' => $data1['soal']->soal,
+                'mapel' => $data1['soal']->mapel,
+                'kelas' => $data1['soal']->kelas,
+                'guru' => $data1['soal']->guru,
+                'opsi_a' => $data1['soal']->opsi_a,
+                'opsi_b' => $data1['soal']->opsi_b,
+                'opsi_c' => $data1['soal']->opsi_c,
+                'opsi_d' => $data1['soal']->opsi_d,
+                'opsi_e' => $data1['soal']->opsi_e,
+                'jawaban' => $data1['soal']->jawaban,
+                
+                ];
+                // dd($data);
+            $this->db->table('soal')->insert($data);
+            if ($query->resultID->num_rows > 0) {
+              
+                return redirect()->to(base_url('/admin/soal'))->with('success', 'Data Berhasil Disalin!');
+            } else {
+                return redirect()->to(base_url('/admin/soal'))->with('eror', 'Data Tidak Ditemukan!');
+            }
+        } else {
+            return redirect()->to(base_url('/admin/mapel'))->with('eror', 'Data Tidak Ditemukan!');
+        }
+    }
     public function tambahUlangan()
     {
         $builder = $this->db->table('mapel')->get()->getResult();
@@ -143,7 +175,7 @@ class Admin extends BaseController
             'opsi_c' => $this->request->getVar('c'),
             'opsi_d' => $this->request->getVar('d'),
             'opsi_e' => $this->request->getVar('e'),
-            'jawaban' => $this->request->getVar('jwb'),
+            'jawaban' => $this->request->getVar('jawaban'),
             
             ];
         $this->db->table('soal')->insert($data);
@@ -151,6 +183,7 @@ class Admin extends BaseController
             return redirect()->to(base_url('/admin/soal'))->with('success', 'Data Berhasil Disimpan!');
         }
     }
+    
     public function simpanGuru()
     {
         $valid = $this->validate([

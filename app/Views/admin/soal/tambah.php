@@ -118,13 +118,13 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jawaban</label>
                   <div class="col-sm-12 col-md-7">
-                    <select class="form-control selectric" required>
+                    <select class="form-control selectric" name="jawaban" required>
                       <option selected disabled value="">-- pilih Jawaban --</option>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                      <option value="E">E</option>
+                      <option value="a">A</option>
+                      <option value="b">B</option>
+                      <option value="c">C</option>
+                      <option value="d">D</option>
+                      <option value="e">E</option>
                     </select>
                   </div>
                 </div>

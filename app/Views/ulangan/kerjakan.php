@@ -3,8 +3,11 @@
 <?= $this->section('content') ?>
 <section class="section">
     
-    <form action="<?=base_url()?>/ulangan/hitung/<?=$soal->id_kelas;?>/<?=$soal->id_mapel;?>" method="post">
+   
+    <form action="<?=base_url()?>/ulangan/hitung/<?=$id->kelas;?>/<?=$id->mapel;?>" method="post">
     <?= csrf_field(); ?>
+    <input class="form-check-input" value="<?=$id->kelas;?>"  type="text" hidden name="kelas" >
+    <input class="form-check-input" value="<?=$id->mapel;?>"  type="text" hidden name="mapel" >
     <?php $i = 1;foreach ($soal as $key => $s) {
     ?>
         <div class="col-12 ">
@@ -16,32 +19,32 @@
                 </div>
                 <div class="card-body">
                     <div class="form-check">
-                        <input class="form-check-input" value="a"  type="radio" name="jawaban<?=$s->id_soal?>" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" value="a"  type="radio" name="jawaban<?=$s->id_soal?>" id="flexRadioDefault<?=$s->id_soal?>">
+                        <label class="form-check-label" for="flexRadioDefault<?=$s->id_soal?>">
                             <?=$s->opsi_a?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" value="b" type="radio" name="jawaban" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" value="b" type="radio" name="jawaban<?=$s->id_soal?>" id="flexRadioDefault<?=$s->id_soal?>">
+                        <label class="form-check-label" for="flexRadioDefault<?=$s->id_soal?>">
                             <?=$s->opsi_b?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" value="c"  type="radio" name="jawaban" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" value="c"  type="radio" name="jawaban<?=$s->id_soal?>" id="flexRadioDefault<?=$s->id_soal?>">
+                        <label class="form-check-label" for="flexRadioDefault<?=$s->id_soal?>">
                             <?=$s->opsi_c?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" value="d"  type="radio" name="jawaban" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" value="d"  type="radio" name="jawaban<?=$s->id_soal?>" id="flexRadioDefault<?=$s->id_soal?>">
+                        <label class="form-check-label" for="flexRadioDefault<?=$s->id_soal?>">
                             <?=$s->opsi_d?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" value="e"  type="radio" name="jawaban" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" value="e"  type="radio" name="jawaban<?=$s->id_soal?>" id="flexRadioDefault<?=$s->id_soal?>">
+                        <label class="form-check-label" for="flexRadioDefault<?=$s->id_soal?>">
                             <?=$s->opsi_e?>
                         </label>
                     </div>

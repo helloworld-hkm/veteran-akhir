@@ -1,6 +1,6 @@
 <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
-        <a href="index.html" class=" text-black navbar-brand sidebar-gone-hide">
+        <a href="<?=base_url('siswa')?>/index" class=" text-black navbar-brand sidebar-gone-hide">
         <img src="<?=base_url()?>/img/icon.ico" alt="" width="40"  class="d-inline-block align-center" >
            &nbsp;SMK VETERAN PEKALONGAN</a>
         <div class="navbar-nav">

@@ -15,9 +15,10 @@ class Siswa extends BaseController
     
         $this->data_user= $this->db->table('siswa')->where('user_id',session()->get('id_user'))->get()->getRow();
         session()->set('nama', $this->data_user->nama);
-        
+     $kelas=  $this->data_user->id_kelas;
         $builder = $this->db->table('ulangan');
-        $query   = $builder->join('mapel','mapel.id=ulangan.id_mapel')->get();
+        $query   = $builder->join('mapel','mapel.id=ulangan.id_mapel')->where('id_kelas',$kelas)->get();
+        // dd($query->getResult());
         // $id_siswa=$this->data_user->id;
         // $jadwal=$this->db->query("SELECT ulangan.*, (SELECT count(id_tes) FROM ikut_ulangan WHERE ikut_ulangan.id_siswa=". $this->data_user->id." AND ikut_ulangan.id_ulangan=ulangan.id_ulangan) AS sudah_ikut, (SELECT id_mapel FROM mapel WHERE mapel.id=ulangan.id_mapel) AS mapel, (SELECT status FROM ikut_ulangan WHERE ikut_ulangan.id_siswa=".$this->data_user->id." AND ikut_ulangan.id_ulangan=ulangan.id_ulangan) AS status FROM ulangan, siswa WHERE ulangan.id_kelas=siswa.id_kelas AND siswa.id=".$this->data_user->id." ORDER BY sudah_ikut ASC;");
     

@@ -60,6 +60,7 @@
                       <th>Guru</th>
                       <th>Kelas</th>
                       <th>Edit</th>
+                      <th>Salin</th>
                       <th>Hapus</th>
 
 
@@ -86,6 +87,8 @@
 
 
                         <td><a href="<?= base_url('admin/editSiswa/' . $ss->id_soal) ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
+                     
+                        <td><a href="<?= base_url('admin/salinSoal/' . $ss->id_soal) ?>" class="btn btn-success"><i class="fa fa-edit"></i></a></td>
                         <td>
                           <form action="<?= base_url('admin/hapusSiswa/' . $ss->id_soal) ?>" method="post" onsubmit="return confirm('yakin ingin hapus data?')">
                             <?= csrf_field(); ?>

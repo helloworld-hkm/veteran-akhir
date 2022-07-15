@@ -145,7 +145,7 @@ class Auth extends BaseController
                     session()->set('role', $cek['role_id']);
                     //success
                     if ($cek['role_id'] == 2) {
-                        return redirect()->to(base_url('siswa'));
+                        return redirect()->to(base_url('siswa/index'));
                     } else {
                     }
                     return redirect()->to(base_url('admin'));

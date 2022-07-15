@@ -53,7 +53,7 @@ $routes->delete('admin/hapusMapel/(:num)', 'Admin::hapusMapel/$1',['filter' => '
 $routes->get('admin/jurusan', 'Admin::jurusan');
 
 
-
+$routes->get('admin/salinSoal/(:num)', 'Admin::salinSoal/$1',['filter' => 'filterAdmin']);
 
 $routes->get('/guru', 'Guru::Index',['filter' => 'filterGuru']);
 $routes->get('/ulangan/kerjakan/(:any)/(:num)', 'Ulangan::kerjakan/$1/$2',['filter' => 'filterSiswa']);
