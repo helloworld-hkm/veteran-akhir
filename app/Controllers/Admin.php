@@ -81,7 +81,7 @@ class Admin extends BaseController
         return view('admin/ulangan/index', $data);
     }
     public function tambahSoal()
-    {
+    { 
         $builder = $this->db->table('mapel')->get()->getResult();
         $builder1 = $this->db->table('kelas')->get()->getResult();
         $builder2 = $this->db->table('guru')->get()->getResult();
