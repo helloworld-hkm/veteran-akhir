@@ -29,15 +29,15 @@
       <div class="card-body">
         <div class="form-group">
           <label>password Lama</label>
-          <input type="text" name="passwordLama" class="form-control">
+          <input type="password" name="passwordLama" class="form-control">
         </div>
         <div class="form-group">
           <label>Password Baru</label>
-          <input type="text"  name="passwordBaru" class="form-control">
+          <input type="password"  name="passwordBaru" class="form-control">
         </div>
         <div class="form-group">
           <label>Konfirmasi Password</label>
-          <input type="text"  name="konfirm" class="form-control">
+          <input type="password"  name="konfirm" class="form-control">
         </div>
       </div>
 

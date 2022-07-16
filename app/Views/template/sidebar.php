@@ -23,7 +23,7 @@
                   <li><a class="nav-link" href="/admin/jurusan">Jurusan</a></li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-plug"></i> <span>Relasi</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
@@ -32,7 +32,7 @@
               
                 </ul>
 
-              </li>
+              </li> -->
               <li><a class="nav-link" href="<?=base_url()?>/admin/ulangan"><i class="fas fa-clipboard"></i> <span>Ulangan</span></a></li>
               <li><a class="nav-link" href="<?=base_url()?>/admin/soal"><i class="fas fa-th-large"></i> <span>Bank Soal</span></a></li>
 

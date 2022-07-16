@@ -53,7 +53,7 @@
 
                         <td><a href="<?= base_url('admin/editGuru/' . $gru->id) ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
                         <td>
-                          <form action="<?= base_url('admin/hapusGuru/' . $gru->id) ?>" method="post" onsubmit="return confirm('yakin ingin hapus data?')">
+                          <form action="<?= base_url('admin/hapusGuru/' . $gru->user_id) ?>" method="post" onsubmit="return confirm('yakin ingin hapus data?')">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="btn btn-danger">

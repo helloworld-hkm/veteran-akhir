@@ -310,3 +310,293 @@ in APPPATH/Controllers/Siswa.php on line 80.
  4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
  5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+ERROR - 2022-07-16 02:27:30 --> Unknown column 'kelas' in 'where clause'
+CRITICAL - 2022-07-16 02:27:30 --> Unknown column 'kelas' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/Ulangan.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+ERROR - 2022-07-16 02:27:34 --> Unknown column 'kelas' in 'where clause'
+CRITICAL - 2022-07-16 02:27:34 --> Unknown column 'kelas' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/Ulangan.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+ERROR - 2022-07-16 02:34:10 --> Unknown column '=user.id' in 'on clause'
+CRITICAL - 2022-07-16 02:34:10 --> Unknown column '=user.id' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/Ulangan.php(35): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 02:37:33 --> Object of class stdClass could not be converted to string
+in SYSTEMPATH/Database/Query.php on line 335.
+ 1 SYSTEMPATH/Database/Query.php(335): strtr()
+ 2 SYSTEMPATH/Database/Query.php(310): CodeIgniter\Database\Query->matchNamedBinds()
+ 3 SYSTEMPATH/Database/Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 4 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\Query->getQuery()
+ 5 SYSTEMPATH/Database/BaseBuilder.php(1904): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH/Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+ 7 SYSTEMPATH/BaseModel.php(738): CodeIgniter\Model->doInsert()
+ 8 SYSTEMPATH/Model.php(666): CodeIgniter\BaseModel->insert()
+ 9 SYSTEMPATH/BaseModel.php(658): CodeIgniter\Model->insert()
+10 APPPATH/Controllers/Ulangan.php(77): CodeIgniter\BaseModel->save()
+11 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+12 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+13 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+14 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 02:38:39 --> Call to undefined function App\Controllers\int()
+in APPPATH/Controllers/Ulangan.php on line 74.
+ 1 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+ 2 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 02:39:38 --> Call to undefined function App\Controllers\interval()
+in APPPATH/Controllers/Ulangan.php on line 74.
+ 1 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+ 2 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 02:42:05 --> Object of class stdClass could not be converted to string
+in SYSTEMPATH/Database/Query.php on line 335.
+ 1 SYSTEMPATH/Database/Query.php(335): strtr()
+ 2 SYSTEMPATH/Database/Query.php(310): CodeIgniter\Database\Query->matchNamedBinds()
+ 3 SYSTEMPATH/Database/Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 4 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\Query->getQuery()
+ 5 SYSTEMPATH/Database/BaseBuilder.php(1904): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH/Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+ 7 SYSTEMPATH/BaseModel.php(738): CodeIgniter\Model->doInsert()
+ 8 SYSTEMPATH/Model.php(666): CodeIgniter\BaseModel->insert()
+ 9 SYSTEMPATH/BaseModel.php(658): CodeIgniter\Model->insert()
+10 APPPATH/Controllers/Ulangan.php(78): CodeIgniter\BaseModel->save()
+11 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+12 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+13 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+14 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+ERROR - 2022-07-16 02:44:25 --> Unknown column 'created_at' in 'field list'
+CRITICAL - 2022-07-16 02:44:25 --> Unknown column 'created_at' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1904): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(738): CodeIgniter\Model->doInsert()
+ 7 SYSTEMPATH/Model.php(666): CodeIgniter\BaseModel->insert()
+ 8 SYSTEMPATH/BaseModel.php(658): CodeIgniter\Model->insert()
+ 9 APPPATH/Controllers/Ulangan.php(78): CodeIgniter\BaseModel->save()
+10 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+11 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+13 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 02:45:36 --> Attempt to read property "id_ulangan" on null
+in APPPATH/Controllers/Ulangan.php on line 70.
+ 1 APPPATH/Controllers/Ulangan.php(70): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 03:05:19 --> Undefined property: stdClass::$id_siswa
+in APPPATH/Controllers/Ulangan.php on line 88.
+ 1 APPPATH/Controllers/Ulangan.php(88): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->selesai()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 03:07:36 --> Attempt to read property "id_ulangan" on string
+in APPPATH/Controllers/Ulangan.php on line 89.
+ 1 APPPATH/Controllers/Ulangan.php(89): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->selesai()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 03:08:05 --> Undefined variable $nilai
+in APPPATH/Views/ulangan/selesai.php on line 34.
+ 1 APPPATH/Views/ulangan/selesai.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/ulangan/selesai.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Ulangan.php(91): view()
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->selesai()
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 03:11:48 --> Attempt to read property "nilai" on null
+in APPPATH/Controllers/Ulangan.php on line 92.
+ 1 APPPATH/Controllers/Ulangan.php(92): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->selesai()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 03:14:55 --> Object of class stdClass could not be converted to string
+in APPPATH/Controllers/Ulangan.php on line 51.
+ 1 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+ 2 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 03:15:00 --> Object of class stdClass could not be converted to string
+in APPPATH/Controllers/Ulangan.php on line 51.
+ 1 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->hitung()
+ 2 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 03:16:24 --> Attempt to read property "nilai" on null
+in APPPATH/Controllers/Ulangan.php on line 93.
+ 1 APPPATH/Controllers/Ulangan.php(93): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Ulangan->selesai()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+ERROR - 2022-07-16 03:44:40 --> Table 'veteran.ujian' doesn't exist
+CRITICAL - 2022-07-16 03:44:40 --> Table 'veteran.ujian' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 APPPATH/Controllers/Siswa.php(34): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Siswa->index()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 03:48:25 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::get()
+in APPPATH/Controllers/Siswa.php on line 35.
+ 1 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Siswa->index()
+ 2 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 04:00:34 --> CodeIgniter\Database\BaseBuilder::fromSubquery(): Argument #1 ($from) must be of type CodeIgniter\Database\BaseBuilder, array given, called in /home/nirmala-std/Documents/sistem-login/app/Controllers/Siswa.php on line 41
+in SYSTEMPATH/Database/BaseBuilder.php on line 576.
+ 1 APPPATH/Controllers/Siswa.php(41): CodeIgniter\Database\BaseBuilder->fromSubquery()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Siswa->index()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 04:06:29 --> Attempt to read property "id_ulangan" on array
+in APPPATH/Views/siswa/index.php on line 96.
+ 1 APPPATH/Views/siswa/index.php(96): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/siswa/index.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Siswa.php(58): view()
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 04:50:08 --> Unmatched '}'
+in APPPATH/Views/siswa/index.php on line 136.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Siswa.php(58): view()
+ 4 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Siswa->index()
+ 5 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 04:50:24 --> Unmatched '}'
+in APPPATH/Views/siswa/index.php on line 121.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Siswa.php(58): view()
+ 4 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Siswa->index()
+ 5 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 05:01:06 --> Invalid file: siswa/ubahPassword.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Siswa.php(72): view()
+ 4 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Siswa->ubahPassword()
+ 5 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 05:37:08 --> Undefined property: stdClass::$nik
+in APPPATH/Views/admin/guru/edit.php on line 46.
+ 1 APPPATH/Views/admin/guru/edit.php(46): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/admin/guru/edit.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Admin.php(880): view()
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin->editGuru()
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 05:40:24 --> Undefined property: stdClass::$tgl_lahir
+in APPPATH/Views/admin/guru/edit.php on line 63.
+ 1 APPPATH/Views/admin/guru/edit.php(63): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/admin/guru/edit.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Admin.php(880): view()
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin->editGuru()
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+ERROR - 2022-07-16 07:41:54 --> Cannot delete or update a parent row: a foreign key constraint fails (`veteran`.`soal`, CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`guru`) REFERENCES `guru` (`id`))
+CRITICAL - 2022-07-16 07:41:54 --> Cannot delete or update a parent row: a foreign key constraint fails (`veteran`.`soal`, CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`guru`) REFERENCES `guru` (`id`))
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2358): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/Admin.php(291): CodeIgniter\Database\BaseBuilder->delete()
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin->hapusGuru()
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 07:55:10 --> Call to a member function getError() on null
+in APPPATH/Controllers/Admin.php on line 226.
+ 1 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin->simpanGuru()
+ 2 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-07-16 08:10:26 --> Call to a member function getError() on null
+in APPPATH/Controllers/Admin.php on line 771.
+ 1 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin->updateSiswa()
+ 2 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')

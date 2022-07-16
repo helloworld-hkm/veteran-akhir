@@ -4,6 +4,8 @@ namespace App\Controllers;
 use App\Models\ModelAuth;
 use App\Models\ModelSiswa;
 
+
+
 class Siswa extends BaseController
 {
     // protected $encrypter;
@@ -12,6 +14,7 @@ class Siswa extends BaseController
     {
         $this->ModelAuth = new ModelAuth();
         $this->ModelSiswa = new ModelSiswa();
+      
         // $this->encrypter = \Config\Services::encrypter();
 
     }
@@ -27,10 +30,16 @@ class Siswa extends BaseController
         // } else{
         //     echo('salah');
         // }
-
+        $idSiswa=$this->db->table('siswa')->join('user','siswa.user_id=user.id')->select('siswa.id')->where('username',session()->username)->get()->getRow();
+  
+     
         $kelas =  $this->data_user->id_kelas;
         $builder = $this->db->table('ulangan');
         $query   = $builder->join('mapel', 'mapel.id=ulangan.id_mapel')->where('id_kelas', $kelas)->get();
+
+        $ikut_ulangan=$this->db->table('ikut_ulangan')->join('ulangan','ulangan.id_ulangan=ikut_ulangan.id_ulangan')->get()->getResult();
+        // $coba = $this->db->table('ulangan')->fromSubquery($ikut_ulangan, 'siluman');
+        // dd($coba);
         // dd($query->getResult());
         // $id_siswa=$this->data_user->id;
         // $jadwal=$this->db->query("SELECT ulangan.*, (SELECT count(id_tes) FROM ikut_ulangan WHERE ikut_ulangan.id_siswa=". $this->data_user->id." AND ikut_ulangan.id_ulangan=ulangan.id_ulangan) AS sudah_ikut, (SELECT id_mapel FROM mapel WHERE mapel.id=ulangan.id_mapel) AS mapel, (SELECT status FROM ikut_ulangan WHERE ikut_ulangan.id_siswa=".$this->data_user->id." AND ikut_ulangan.id_ulangan=ulangan.id_ulangan) AS status FROM ulangan, siswa WHERE ulangan.id_kelas=siswa.id_kelas AND siswa.id=".$this->data_user->id." ORDER BY sudah_ikut ASC;");
@@ -39,7 +48,8 @@ class Siswa extends BaseController
             'title' => 'siswa',
             'ulangan' => $query->getResult(),
             'siswa' => $this->data_user,
-            'cek_password' => $verify_pass
+            'cek_password' => $verify_pass,
+            'status'=>$ikut_ulangan
 
 
         ];
@@ -67,7 +77,7 @@ class Siswa extends BaseController
         $passwordbaru = $this->request->getPost('passwordBaru');
         $konfirm = $this->request->getPost('konfirm');
       
-        $id=session()->id_siswa;
+        $id=session()->id_user;
         $this->data_user = $this->db->table('siswa')->where('user_id', session()->get('id_user'))->get()->getRow();
         session()->set('nama', $this->data_user->nama);
         $dataPassword = $this->db->table('user')->where('username', session()->get('username'))->get()->getRow();
@@ -78,6 +88,7 @@ class Siswa extends BaseController
             'password' => password_hash($passwordbaru, PASSWORD_DEFAULT),
             
         ];
+      
         $this->ModelAuth->update($id,$data);
         session()->setFlashdata('success', 'Password berhasil Diubah');
         return redirect()->to(base_url('siswa/index'));

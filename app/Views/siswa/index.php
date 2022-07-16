@@ -12,6 +12,28 @@
   </div>
 
   <div class="row">
+    <div class="col-12">
+      <?php if (session()->getFlashdata('success')) : ?>
+        <div class="alert alert-success alert-dismissible show fade">
+          <div class="alert-body">
+            <button class="close" data-dismiss>x</button>
+            <b><i class="fa fa-check"></i></b>
+            <?= session()->getFlashdata('success') ?>
+          </div>
+        </div>
+      <?php endif; ?>
+
+       <!-- flash data tidak ditemukan -->
+    <?php if(session()->getFlashdata('eror')):?>
+    <div class="alert alert-danger alert-dismissible show fade">
+      <div class="alert-body">
+      <button class="close" data-dismiss>x</button>
+      <b><i class="fa fa-exclamation-triangle"></i></b>
+      <?=session()->getFlashdata('eror')?>
+      </div>
+    </div>
+    <?php endif;?>
+    </div>
     <div class="col-12 mb-4">
       <div class="hero text-white hero-bg-image hero-bg-parallax" data-background="<?= base_url() ?>/template/assets/img/unsplash/header.jpg">
         <div class="hero-inner">
@@ -22,7 +44,11 @@
           </div>
         </div>
       </div>
+
     </div>
+
+
+
     <?php if ($cek_password == True) {
     ?>
       <!-- jika password masih sama -->
@@ -36,18 +62,18 @@
           </div>
           <div class="collapse show" id="mycard-collapse">
             <div class="card-body ">
-           <b>Password Belum Diubah</b>
+              <b>Password Belum Diubah</b>
 
             </div>
             <div class="card-footer">
-             Ubah Password <a href="<?=base_url()?>/siswa/ubahPassword">disini</a> sebelum mengikuti ulangan
+              Ubah Password <a href="<?= base_url() ?>/siswa/ubahPassword">disini</a> sebelum mengikuti ulangan
             </div>
           </div>
         </div>
       </div>
     <?php } else { ?>
 
-      ?>
+
       <div class="col-12 mb-4">
         <div class="card">
           <div class="card-header">
@@ -70,14 +96,16 @@
                   </thead>
                   <tbody>
                     <?php $i = 1; ?>
+
                     <?php foreach ($ulangan as $key => $ul) { ?>
+                     
                       <tr>
                         <th scope="row"><?= $i++; ?></th>
                         <td><?= $ul->nama_mapel ?></td>
-
-
+                     
                         <td> <a href="/ulangan/kerjakan/<?= $ul->id_kelas; ?>/<?= $ul->id_mapel; ?>" class=" d-block btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Kerjakan dengan Jujur"><i class="fas fa-pencil-alt"></i> Kerjakan</a>
-                        </td>
+                              </td>
+
                       </tr>
                     <?php }; ?>
 
