@@ -46,10 +46,10 @@
                                             <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="nik" required autofocus <?php if (session('errors.nama_mapel')) : ?>is-invalid<?php endif ?> value="<?= old('nama_mapel') ?>">
                                         </div>
 
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="id_mengajar">Id Mengajar :</label>
                                             <input type="text" class="form-control" name="id_mengajar" required autofocus>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <label for="nama">Nama :</label>
                                             <input type="text" class="form-control" name="nama" required autofocus>

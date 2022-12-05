@@ -1,5 +1,10 @@
 
-login: admin
-password: password
+admin :
+username :33261
+password:smkveteran
+
+siswa
+username:13966
+password:13966
 
 

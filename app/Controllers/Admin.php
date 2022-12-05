@@ -202,14 +202,14 @@ class Admin extends BaseController
                 ]
 
                 ],
-            'foto' => [
-                'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
-                'errors' => [
-                    'max_size' => 'Ukuran Gambar Terlalu Besar',
-                    'is_image' => 'yang anda pilih bukan gambar',
-                    'mime_in' => 'yang anda pilih bukan gambar'
-                ]
-            ]
+            // 'foto' => [
+            //     'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+            //     'errors' => [
+            //         'max_size' => 'Ukuran Gambar Terlalu Besar',
+            //         'is_image' => 'yang anda pilih bukan gambar',
+            //         'mime_in' => 'yang anda pilih bukan gambar'
+            //     ]
+            // ]
 
         ]);
         if ($valid) {
@@ -223,13 +223,13 @@ class Admin extends BaseController
                 'username' => $this->request->getVar('nik')
             ])->get()->getRowArray();
             // dd($id_siswa);
-            $foto = $this->request->getFile('foto');
-            if ($foto->getError() == 4) {
+            // $foto = $this->request->getFile('foto');
+            // if ($foto->getError() == 4) {
                 $namaFoto = ('jenis_kelamin') == '1' ? 'default-p.png' : 'default-l.png';
-            } else {
-                $foto->move('img/guru');
-                $namaFoto = $foto->getName();
-            }
+            // } else {
+            //     $foto->move('img/guru');
+            //     $namaFoto = $foto->getName();
+            // }
             $dataGuru = [
                 'user_id' => $id_guru['id'],
                 'nama' => $this->request->getPost('nama'),
